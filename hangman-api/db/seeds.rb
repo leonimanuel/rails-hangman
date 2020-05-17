@@ -5,6 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-category1 = Category.create(name: "Movies")
-category1 = Category.create(name: "Animals")
-category1 = Category.create(name: "Geography")
+movies = Category.create(name: "Movies")
+animals = Category.create(name: "Animals")
+geography = Category.create(name: "Geography")
+
+action = Subcategory.create(name: "Action", category: movies)
+comedy = Subcategory.create(name: "Comedy", category: movies)
+drama = Subcategory.create(name: "Drama", category: movies)
+
+birds = Subcategory.create(name: "Birds", category: animals)
+megafauna = Subcategory.create(name: "Megafauna", category: animals)
+reptiles = Subcategory.create(name: "Reptiles", category: animals)
+
+state_capitals = Subcategory.create(name: "State Capitals", category: geography)
+countries = Subcategory.create(name: "Countries", category: geography)
+landmarks = Subcategory.create(name: "Landmarks", category: geography)
