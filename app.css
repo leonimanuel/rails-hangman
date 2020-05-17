@@ -1,0 +1,13 @@
+/*h1 {
+	color: red;
+}*/
+
+#categories {
+	display: flex;
+	justify-content: center;
+	border: 1px solid red;
+}
+
+.category {
+	margin: 0 10px;
+}

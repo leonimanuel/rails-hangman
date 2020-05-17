@@ -6,7 +6,12 @@
 		.then(function(object) {
 			for (c of object) {
 				let div = document.createElement("div");
+				div.id = `${c.name.toLowerCase()}-category`
+				div.className = "category"
 				div.innerText = c.name;
+
+				div.addEventListener("click", showSub)
+
 				$("div#categories").append(div)
 				// let categories = document.getElementById("categories")
 				// let div = document.createElement("div");
@@ -19,3 +24,7 @@
 			alert("failed bruh")
 		})
 })()
+
+function showSub(e) {
+	console.log(e.target.id)
+}
