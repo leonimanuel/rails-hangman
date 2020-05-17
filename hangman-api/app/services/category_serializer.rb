@@ -4,6 +4,14 @@ class CategorySerializer
 	end
 
 	def to_serialized_json
-		@category.to_json
+		options = {
+			include: {
+				subcategories: {
+					only: [:id, :name]
+				}
+			},
+			except: [:updated_at, :created_at]
+		}
+		@category.to_json(options)
 	end
 end
