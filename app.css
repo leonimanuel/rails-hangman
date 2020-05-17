@@ -2,12 +2,12 @@
 	color: red;
 }*/
 
-#categories {
+#categories, #subcategories {
 	display: flex;
 	justify-content: center;
 	border: 1px solid red;
 }
 
-.category {
+.category, .subcategory {
 	margin: 0 10px;
 }
