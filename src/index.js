@@ -5,12 +5,14 @@
 		.then(resp => resp.json())
 		.then(function(object) {
 			for (c of object) {
-				let categories = document.getElementById("categories")
 				let div = document.createElement("div");
-				categories.appendChild(div)
 				div.innerText = c.name;
-
-				console.log(c.name)
+				$("div#categories").append(div)
+				// let categories = document.getElementById("categories")
+				// let div = document.createElement("div");
+				// div.innerText = c.name;
+				// categories.appendChild(div)
+				// console.log(c.name)
 			}
 		})
 		.catch(function(error) {
