@@ -12,18 +12,22 @@ class Game {
 		this.strikes = 0
 		this.hangmanTranslateHorizontal = 0
 		this.hangmanTranslateVertical = 0
+		this.goodGuesses = 0
 		// this.turns = turns;
 		// this.result = result;
 	}
 
-	// set strikes(strike) {
-	// 	console.log(strike)
-	// }
+	addGoodGuess() {
+		this.goodGuesses += 1
+		if (this.goodGuesses === this.phraseContent.length) {
+			winGame()
+		}
+	}
+
 	addStrike() {
 		this.strikes += 1
 		if (this.strikes >= 5) {
-			gameOver()
-			// console.log("game over")
+			loseGame()
 		}
 	}
 }
@@ -113,7 +117,8 @@ function submitGuess(guess) {
 		console.log("sweet")
 		for (let div of $("div.letter-box")) {
 			if (div.innerText === guess) {
-				div.style.color = "green"				
+				div.style.color = "green"
+				game.addGoodGuess()			
 			}
 		}
 
@@ -129,7 +134,11 @@ function submitGuess(guess) {
 	}
 }
 
-function gameOver() {
+function winGame() {
+	console.log("You just saved my neck, partner")	
+}
+
+function loseGame() {
 	console.log("Hang me, oh hang me")
 }
 
