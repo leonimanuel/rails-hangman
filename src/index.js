@@ -135,8 +135,29 @@ function submitGuess(guess) {
 }
 
 function winGame() {
-	console.log("You just saved my neck, partner")	
-}
+	console.log("You just saved my neck, partner")
+	if (user) {
+		let configObj = {
+			method: "PATCH",
+			headers: {
+				"Content_Type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({
+				result: "win"
+			})
+		}
+
+		fetch(`http://localhost:3000/user/${user.id}`, configObj)
+			.then(resp => resp.json())
+			.then(function(object) {
+				console.log("updated user")
+			})
+			.catch(function(error) {
+				console.log(error.message)
+			})		
+	}
+};
 
 function loseGame() {
 	console.log("Hang me, oh hang me")
