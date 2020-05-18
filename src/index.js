@@ -10,6 +10,8 @@ class Game {
 		this.phraseContent = phraseObj.content;
 		this.hint = phraseObj.hint
 		this.strikes = 0
+		this.hangmanTranslateHorizontal = 0
+		this.hangmanTranslateVertical = 0
 		// this.turns = turns;
 		// this.result = result;
 	}
@@ -122,6 +124,8 @@ function submitGuess(guess) {
 
 		guessedBox.style.color = "red"
 		$("div#guessed-container").append(guessedBox)
+
+		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
 	}
 }
 
