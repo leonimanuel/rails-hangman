@@ -1,5 +1,7 @@
 //On DOM CONTENT LOAD?
 // console.log("yup")
+let game
+
 (function getCategories() {
 	fetch("http://localhost:3000/categories")
 		.then(resp => resp.json())
@@ -43,27 +45,43 @@ function getPhrase(e, cObj, subcObj) {
 	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
 		.then(resp => resp.json())
 		.then(function(subcObj) {
-			let randomPhrase = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)].content
-			startGame(subcObj, randomPhrase)
+			let randomPhraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+			startGame(subcObj, randomPhraseObj)
 			// console.log(randomPhraseObj.content)
 		})
 }
 
-function startGame(subc, phrase) {
-	// console.log("starting game")
-	let game = new Game(subc, phrase)
+function startGame(subcObj, phraseObj) {
+	$("div#board").empty()
+	game = new Game(subcObj, phraseObj)
+	// console.log(game.phrase)
 
-	let div = document.createElement("div")
-	div.innerText = game.phrase
-	div.id = "phrase"
-	$("div#board").append(div)
+	//create box for each letter
+	let phraseArr = game.phraseContent.split("")
+	for (let letter of phraseArr) {
+		let letterBox = document.createElement("div")
+		letterBox.className = "letter-box"
+		letterBox.innerText = letter
+		$("div#board").append(letterBox)
+
+	}
+
+
+	// let div = document.createElement("div")
+	// div.innerText = game.phrase
+	// div.id = "phrase"
+	// $("div#board").append(div)
+
+
 }
 
 class Game {
-	constructor(subcategory, phrase) {
+	constructor(subcategory, phraseObj) {
 		// this.category = category;
-		this.subcategory = subcategory;
-		this.phrase = phrase
+		this.subcategory = subcategory.name;
+		this.phraseObj = phraseObj
+		this.phraseContent = phraseObj.content;
+		this.hint = phraseObj.hint
 		// this.turns = turns;
 		// this.result = result;
 	}

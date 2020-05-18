@@ -15,3 +15,9 @@
 .category, .subcategory {
 	margin: 0 10px;
 }
+
+.letter-box {
+	color: transparent;
+	border: 1px solid transparent;
+	border-bottom: 2px solid black;
+}
