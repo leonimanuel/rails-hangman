@@ -2,6 +2,18 @@
 // console.log("yup")
 let game
 
+class Game {
+	constructor(subcategory, phraseObj) {
+		// this.category = category;
+		this.subcategory = subcategory.name;
+		this.phraseObj = phraseObj
+		this.phraseContent = phraseObj.content;
+		this.hint = phraseObj.hint
+		// this.turns = turns;
+		// this.result = result;
+	}
+}
+
 (function getCategories() {
 	fetch("http://localhost:3000/categories")
 		.then(resp => resp.json())
@@ -60,33 +72,35 @@ function startGame(subcObj, phraseObj) {
 	let phraseArr = game.phraseContent.split("")
 	for (let letter of phraseArr) {
 		let letterBox = document.createElement("div")
-		letterBox.className = "letter-box"
+		letterBox.classList.add("letter-box", `letter-${letter}`)
+		// letterBox.classlist.add(`letter-${letter}`)
 		letterBox.innerText = letter
 		$("div#board").append(letterBox)
-
-	}
-
-
-	// let div = document.createElement("div")
-	// div.innerText = game.phrase
-	// div.id = "phrase"
-	// $("div#board").append(div)
-
-
-}
-
-class Game {
-	constructor(subcategory, phraseObj) {
-		// this.category = category;
-		this.subcategory = subcategory.name;
-		this.phraseObj = phraseObj
-		this.phraseContent = phraseObj.content;
-		this.hint = phraseObj.hint
-		// this.turns = turns;
-		// this.result = result;
 	}
 }
 
+//ADD LISTENER for #guess-box
+let guessInput = document.getElementById("guess-input")
+guessInput.addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    // console.log(e.target.value)
+    submitGuess(e.target.value)
+  }
+});
+
+function submitGuess(guess) {
+	if (game.phraseContent.includes(guess)) {
+		console.log("sweet")
+		for (let div of $("div.letter-box")) {
+			if (div.innerText === guess) {
+				div.style.color = "green"				
+			}
+		}
+	} else {
+		console.log("shucks")
+	}
+}
 
 
 
