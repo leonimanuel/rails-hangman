@@ -34,7 +34,8 @@ class Game {
 }
 
 class User {
-	constructor(name, email) {
+	constructor(id, name, email) {
+		this.id = id
 		this.name = name;
 		this.email = email
 	}
@@ -147,28 +148,29 @@ function submitGuess(guess) {
 }
 
 function gameOver(result) {
-	if (result === "win") {
-		if (user) {
-			let configObj = {
-				method: "PATCH",
-				headers: {
-					"Content_Type": "application/json",
-					Accept: "application/json"
-				},
-				body: JSON.stringify({
-					result: "win"
-				})
-			}
-
-			fetch(`http://localhost:3000/user/${user.id}`, configObj)
-				.then(resp => resp.json())
-				.then(function(object) {
-					console.log("updated user")
-				})
-				.catch(function(error) {
-					console.log(error.message)
-				})		
+	if (user) {
+		console.log("right here baby")
+		let configObj = {
+			method: "PATCH",
+			headers: {
+				"Content_Type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({
+				result: result
+			})
 		}
+
+		fetch(`http://localhost:3000/users/${user.id}`, configObj)
+			.then(resp => resp.json())
+			.then(function(object) {
+				console.log(object)
+			})
+			.catch(function(error) {
+				console.log(error.message)
+			})		
+	}
+	if (result === "win") {
 		console.log("You just saved my neck, partner")
 
 	} else if (result === "lose") {

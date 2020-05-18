@@ -42,7 +42,7 @@ function logIn() {
 }
 
 function loadUser(userObj) {
-	user = new User(userObj.name, userObj.email);
+	user = new User(userObj.id, userObj.name, userObj.email);
 	
 	$("#login").addClass("hidden");
 	// userInfo = document.createElement("div");
