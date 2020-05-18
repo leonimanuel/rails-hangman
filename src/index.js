@@ -99,13 +99,14 @@ function getPhrase(e, cObj, subcObj) {
 function startGame(subcObj) {
 	$("div#board").empty()
 	$("#guesses-box").empty()
-	if ($("#hangman-picture")[0].classList.contains("top")) {
-		setTimeout(function() {
-			$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal += 65)}px, ${(game.hangmanTranslateVertical += 15)}px)`});
-		}, 1000)
-	}
 
 	game = new Game(subcObj)
+
+	if ($("#hangman-picture")[0].classList.contains("top")) {
+		setTimeout(function() {
+			$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
+		}, 1000)
+	}
 
 	let phraseArr = game.phraseContent.split("")
 	for (let letter of phraseArr) {
