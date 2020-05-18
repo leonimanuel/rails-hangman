@@ -130,9 +130,6 @@ guessInput.addEventListener("keyup", function(e) {
 });
 
 function submitGuess(guess) {
-	console.log("eyo")
-	$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
-
 	let guessedBox = document.createElement("div")
 	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
 	guessedBox.innerText = guess
@@ -152,6 +149,9 @@ function submitGuess(guess) {
 	} else {
 		guessedBox.style.color = "red"
 		$("#guesses-box").append(guessedBox)
+
+		console.log("eyo")
+		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
 
 		game.addStrike()
 	}
