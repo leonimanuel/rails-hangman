@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 			user.losses += 1
 		end
 		user.save
-		binding.pry
+		# binding.pry
 		render json: UserSerializer.new(user).to_serialized_json
 	end
 end

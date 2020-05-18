@@ -27,17 +27,19 @@ class Game {
 
 	addStrike() {
 		this.strikes += 1
-		if (this.strikes >= 5) {
+		if (this.strikes >= 2) {
 			gameOver("lose")
 		}
 	}
 }
 
 class User {
-	constructor(id, name, email) {
+	constructor(id, name, email, wins, losses) {
 		this.id = id
 		this.name = name;
 		this.email = email
+		this.wins = wins
+		this.losses = losses
 	}
 
 	// get wins() {
@@ -161,15 +163,20 @@ function gameOver(result) {
 			})
 		}
 
+		console.log("bededucci")
 		fetch(`http://localhost:3000/users/${user.id}`, configObj)
 			.then(resp => resp.json())
 			.then(function(object) {
-				console.log(object)
+				user.wins = object.wins
+				user.losses = object.losses
+				console.log("updated wins/losses")
+				updateScoreboard()
 			})
 			.catch(function(error) {
 				console.log(error.message)
-			})		
+			})					
 	}
+
 	if (result === "win") {
 		console.log("You just saved my neck, partner")
 
@@ -177,4 +184,13 @@ function gameOver(result) {
 		console.log("Hang me, oh hang me")
 	}
 };
+
+function updateScoreboard() {
+	console.log("updating scoreboard")
+	wins = document.getElementById("wins")
+	wins.innerText = `wins: ${user.wins}`
+
+	losses = document.getElementById("losses")
+	losses.innerText = `losses: ${user.losses}`
+}
 

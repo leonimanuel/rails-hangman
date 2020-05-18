@@ -31,6 +31,7 @@ function logIn() {
 		.then(function(object) {
 			if (object.name) {
 				loadUser(object)
+				closeLogin()
 				console.log(object.name);
 			} else {
 				console.log(object.message)
@@ -42,7 +43,7 @@ function logIn() {
 }
 
 function loadUser(userObj) {
-	user = new User(userObj.id, userObj.name, userObj.email);
+	user = new User(userObj.id, userObj.name, userObj.email, userObj.wins, userObj.losses);
 	
 	$("#login").addClass("hidden");
 	// userInfo = document.createElement("div");
@@ -53,9 +54,16 @@ function loadUser(userObj) {
 	userName.innerText = user.name
 	$("#user-info").append(userName)
 
-	// wins = document.createElement("div");
-	// wins.id = "wins";
-	// wins.innerText = user.wins
+	wins = document.createElement("div");
+	wins.id = "wins";
+	wins.innerText = `wins: ${user.wins}`
+
+	losses = document.createElement("div");
+	losses.id = "losses";
+	losses.innerText = `losses: ${user.losses}`
+
+	$("#user-info").append(wins)
+	$("#user-info").append(losses)
 };
 
 
