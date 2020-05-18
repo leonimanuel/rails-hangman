@@ -11,15 +11,10 @@
 				div.innerText = c.name;
 
 				div.addEventListener("click", function() {
-					showSub(event, c.subcategories)
+					showSub(event, c, c.subcategories)
 				})
 
 				$("div#categories").append(div)
-				// let categories = document.getElementById("categories")
-				// let div = document.createElement("div");
-				// div.innerText = c.name;
-				// categories.appendChild(div)
-				console.log(c.subcategories)
 			}
 		})
 		.catch(function(error) {
@@ -27,28 +22,47 @@
 		})
 })()
 
-function showSub(e, subcArray) {
-
+function showSub(e, c, subcArray) {
 	$("div#subcategories").empty();
-	for (subc of subcArray) {
+
+	for (let subc of subcArray) {
 		let div = document.createElement("div");
 		div.id = `${subc.name.toLowerCase()}-subcategory`
 		div.className = "subcategory"
 		div.innerText = subc.name;
 
+		div.addEventListener("click", function() {
+			startGame(e, c, subc)
+		})
+
 		$("div#subcategories").append(div)	
 	}
-	// object
-	// let div = document.createElement("div");
-	// div.id = `${subc.name.toLowerCase()}-subcategory`
-	// div.className = "subcategory"
-	// div.innerText = subc.name;
-
-	// $("div#subcategories").append(div)
-
-	// console.log(e.target.id)
-	// console.log(object)
 }
+
+function startGame(e, cObj, subcObj) {
+	console.log(subcObj.id)
+	// fetch(`http://localhost:3000/subcategory/${subc.id}`)
+	// game = new Game(cObj.name, subcObj.name, )
+	// console.log(category)
+	// console.log(subcategory)
+}
+
+class Game {
+	constructor(category, subcategory, phrase) {
+		this.category = category;
+		this.subcategory = subcategory;
+		this.phrase = phrase
+		// this.turns = turns;
+		// this.result = result;
+	}
+}
+
+
+
+
+
+
+
 
 
 
