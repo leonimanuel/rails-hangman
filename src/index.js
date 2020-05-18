@@ -20,7 +20,8 @@ class Game {
 	addStrike() {
 		this.strikes += 1
 		if (this.strikes >= 5) {
-			console.log("game over")
+			gameOver()
+			// console.log("game over")
 		}
 	}
 }
@@ -97,10 +98,15 @@ guessInput.addEventListener("keyup", function(e) {
     e.preventDefault();
     // console.log(e.target.value)
     submitGuess(e.target.value)
+    e.target.value = ""
   }
 });
 
 function submitGuess(guess) {
+	let guessedBox = document.createElement("div")
+	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
+	guessedBox.innerText = guess
+
 	if (game.phraseContent.includes(guess)) {
 		console.log("sweet")
 		for (let div of $("div.letter-box")) {
@@ -108,11 +114,20 @@ function submitGuess(guess) {
 				div.style.color = "green"				
 			}
 		}
+
+		guessedBox.style.color = "green"
+		$("div#guessed-container").append(guessedBox)
 	} else {
 		game.addStrike()
+
+		guessedBox.style.color = "red"
+		$("div#guessed-container").append(guessedBox)
 	}
 }
 
+function gameOver() {
+	console.log("Hang me, oh hang me")
+}
 
 
 
