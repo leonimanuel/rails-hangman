@@ -4,12 +4,12 @@ let game
 let user
 
 class Game {
-	constructor(subcategory, phraseObj) {
+	constructor(subcObj) {
 		// this.category = category;
-		this.subcategory = subcategory.name;
-		this.phraseObj = phraseObj
-		this.phraseContent = phraseObj.content;
-		this.hint = phraseObj.hint
+		this.subcObj = subcObj;
+		this.phraseObj = this.subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+		this.phraseContent = this.phraseObj.content;
+		this.hint = this.phraseObj.hint
 		this.strikes = 0
 		this.hangmanTranslateHorizontal = 0
 		this.hangmanTranslateVertical = 0
@@ -27,7 +27,7 @@ class Game {
 
 	addStrike() {
 		this.strikes += 1
-		if (this.strikes >= 2) {
+		if (this.strikes >= 5) {
 			gameOver("lose")
 		}
 	}
@@ -90,18 +90,23 @@ function getPhrase(e, cObj, subcObj) {
 	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
 		.then(resp => resp.json())
 		.then(function(subcObj) {
-			let randomPhraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
-			startGame(subcObj, randomPhraseObj)
+			// let randomPhraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+			startGame(subcObj)
 			// console.log(randomPhraseObj.content)
 		})
 }
 
-function startGame(subcObj, phraseObj) {
+function startGame(subcObj) {
 	$("div#board").empty()
-	game = new Game(subcObj, phraseObj)
-	// console.log(game.phrase)
+	$("#guesses-box").empty()
+	if ($("#hangman-picture")[0].classList.contains("top")) {
+		setTimeout(function() {
+			$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal += 65)}px, ${(game.hangmanTranslateVertical += 15)}px)`});
+		}, 1000)
+	}
 
-	//create box for each letter
+	game = new Game(subcObj)
+
 	let phraseArr = game.phraseContent.split("")
 	for (let letter of phraseArr) {
 		let letterBox = document.createElement("div")
@@ -124,28 +129,30 @@ guessInput.addEventListener("keyup", function(e) {
 });
 
 function submitGuess(guess) {
+	console.log("eyo")
+	$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
+
 	let guessedBox = document.createElement("div")
 	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
 	guessedBox.innerText = guess
 
 	if (game.phraseContent.includes(guess)) {
+		guessedBox.style.color = "green"
+		$("#guesses-box").append(guessedBox)
+
 		console.log("sweet")
 		for (let div of $("div.letter-box")) {
 			if (div.innerText === guess) {
 				div.style.color = "green"
-				game.addGoodGuess()			
+				game.addGoodGuess()		
 			}
 		}
 
-		guessedBox.style.color = "green"
-		$("div#guessed-container").append(guessedBox)
 	} else {
-		game.addStrike()
-
 		guessedBox.style.color = "red"
-		$("div#guessed-container").append(guessedBox)
+		$("#guesses-box").append(guessedBox)
 
-		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
+		game.addStrike()
 	}
 }
 
@@ -163,7 +170,6 @@ function gameOver(result) {
 			})
 		}
 
-		console.log("bededucci")
 		fetch(`http://localhost:3000/users/${user.id}`, configObj)
 			.then(resp => resp.json())
 			.then(function(object) {
@@ -176,13 +182,17 @@ function gameOver(result) {
 				console.log(error.message)
 			})					
 	}
-
+	
 	if (result === "win") {
 		console.log("You just saved my neck, partner")
 
 	} else if (result === "lose") {
 		console.log("Hang me, oh hang me")
 	}
+	
+	$("#hangman-picture").addClass("top")
+
+	startGame(game.subcObj)
 };
 
 function updateScoreboard() {
