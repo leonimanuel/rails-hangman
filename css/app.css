@@ -17,7 +17,9 @@
 }
 
 .letter-box {
-	color: purple;
+	color: transparent;
+	font-size: 2em;
+	margin: 0 10px;
 	border: 1px solid transparent;
 	border-bottom: 2px solid black;
 }
@@ -28,6 +30,7 @@
 }
 
 #guessed-container {
+	display: flex;
 	border: 2px solid black;
 	width: 30%;
 }
