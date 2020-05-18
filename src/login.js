@@ -1,9 +1,14 @@
-$("div#login")[0].addEventListener("click", loginPopup)
-$("input#login-button")[0].addEventListener("click", logIn)
+$("div#login")[0].addEventListener("click", openLogin)
+$("#login-button")[0].addEventListener("click", logIn)
+$("#close-button")[0].addEventListener("click", closeLogin)
 
-function loginPopup() {
-	// console.log("klork")
-	$("div#login-popup").removeClass("hidden")
+function openLogin() {
+	$("#login-popup").removeClass("hidden")
+
+}
+
+function closeLogin() {
+	$("#login-popup").addClass("hidden")
 
 }
 
