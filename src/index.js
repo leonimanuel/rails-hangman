@@ -9,8 +9,19 @@ class Game {
 		this.phraseObj = phraseObj
 		this.phraseContent = phraseObj.content;
 		this.hint = phraseObj.hint
+		this.strikes = 0
 		// this.turns = turns;
 		// this.result = result;
+	}
+
+	// set strikes(strike) {
+	// 	console.log(strike)
+	// }
+	addStrike() {
+		this.strikes += 1
+		if (this.strikes >= 5) {
+			console.log("game over")
+		}
 	}
 }
 
@@ -98,7 +109,7 @@ function submitGuess(guess) {
 			}
 		}
 	} else {
-		console.log("shucks")
+		game.addStrike()
 	}
 }
 
