@@ -8,6 +8,21 @@
 </head>
 <body>
 	<h1>HANGMAN</h1>
+	<div id="login">Log In</div>
+
+	<div id="login-popup" class="hidden">
+		<span id="close-button">X</span>
+		<span id="login-header">Log in</span>
+
+		<div id="login-inputs-container">
+			Email: <input type="text" id="email-input"> <br>
+			Password: <input type="password" id="password-input"> <br>
+
+			<input type="button" value="Log In">	
+		</div>
+
+	</div>
+
 	<div id="categories"></div>
 	<div id="subcategories"></div>
 
@@ -38,5 +53,6 @@
 
 	<script src="src/jquery.js"></script>
 	<script src="src/index.js"></script>
+	<script src="src/login.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
-/*h1 {
-	color: red;
-}*/
+body {
+	background-color: beige;
+}
 
 #categories, #subcategories, #board {
 	display: flex;
@@ -33,4 +33,38 @@
 	display: flex;
 	border: 2px solid black;
 	width: 30%;
+}
+
+#login-popup {
+	position: absolute;
+	background-color: white;
+	top: 45%;
+	left: 45%;
+	text-align: center;
+	/*border: 1px solid purple;*/
+	border-radius: 10px;
+}
+
+#close-button {
+	display: inline-block;
+	margin-left: 95%;
+	color: red;
+
+	/*border: 1px solid purple;*/
+}
+
+/*#login-header {
+	margin-left: 50%;
+}*/
+
+#login-inputs-container {
+	border: 1px solid blue;
+	margin: 0 20px;
+	margin-bottom: 10px;
+}
+
+
+.hidden {
+	/*border: 2px solid pink;*/
+	display: none;
 }
