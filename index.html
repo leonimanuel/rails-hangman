@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hangman</title>
-	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/scene.css">
 </head>
 <body>
 	<h1>HANGMAN</h1>
@@ -12,6 +13,19 @@
 
 	<div id="guessed-container">
 		<h3>Guesses:</h3>
+	</div>
+
+	<div id="gallows-wrapper">
+		<div id="gallows">
+			<img src="images/noose_man_cropped.png" id="gallows-man">
+			<div class="gallow-stand" id="gallow-pole"></div>
+			<div class="gallow-stand" id="gallow-floor"></div>
+			<div class="gallow-step" id="step-4"></div>
+			<div class="gallow-step" id="step-3"></div>
+			<div class="gallow-step" id="step-2"></div>
+			<div class="gallow-step" id="step-1"></div>
+			<img src="images/executioner_props.png" class="step0" id="hangman-picture">
+		</div>
 	</div>
 
 	<div id="board"></div>
