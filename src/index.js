@@ -1,6 +1,7 @@
 //On DOM CONTENT LOAD?
 // console.log("yup")
 let game
+let user
 
 class Game {
 	constructor(subcategory, phraseObj) {
@@ -20,16 +21,27 @@ class Game {
 	addGoodGuess() {
 		this.goodGuesses += 1
 		if (this.goodGuesses === this.phraseContent.length) {
-			winGame()
+			gameOver("win")
 		}
 	}
 
 	addStrike() {
 		this.strikes += 1
 		if (this.strikes >= 5) {
-			loseGame()
+			gameOver("lose")
 		}
 	}
+}
+
+class User {
+	constructor(name, email) {
+		this.name = name;
+		this.email = email
+	}
+
+	// get wins() {
+	// 	this.wins =
+	// }
 }
 
 (function getCategories() {
@@ -134,33 +146,33 @@ function submitGuess(guess) {
 	}
 }
 
-function winGame() {
-	console.log("You just saved my neck, partner")
-	if (user) {
-		let configObj = {
-			method: "PATCH",
-			headers: {
-				"Content_Type": "application/json",
-				Accept: "application/json"
-			},
-			body: JSON.stringify({
-				result: "win"
-			})
-		}
+function gameOver(result) {
+	if (result === "win") {
+		if (user) {
+			let configObj = {
+				method: "PATCH",
+				headers: {
+					"Content_Type": "application/json",
+					Accept: "application/json"
+				},
+				body: JSON.stringify({
+					result: "win"
+				})
+			}
 
-		fetch(`http://localhost:3000/user/${user.id}`, configObj)
-			.then(resp => resp.json())
-			.then(function(object) {
-				console.log("updated user")
-			})
-			.catch(function(error) {
-				console.log(error.message)
-			})		
+			fetch(`http://localhost:3000/user/${user.id}`, configObj)
+				.then(resp => resp.json())
+				.then(function(object) {
+					console.log("updated user")
+				})
+				.catch(function(error) {
+					console.log(error.message)
+				})		
+		}
+		console.log("You just saved my neck, partner")
+
+	} else if (result === "lose") {
+		console.log("Hang me, oh hang me")
 	}
 };
-
-function loseGame() {
-	console.log("Hang me, oh hang me")
-}
-
 

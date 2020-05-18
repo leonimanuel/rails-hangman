@@ -30,7 +30,8 @@ function logIn() {
 		.then(resp => resp.json())
 		.then(function(object) {
 			if (object.name) {
-				console.log(object.name)
+				loadUser(object)
+				console.log(object.name);
 			} else {
 				console.log(object.message)
 			}
@@ -38,8 +39,23 @@ function logIn() {
 		.catch(function(error) {
 			console.log(error.messsage)
 		})
-
 }
 
+function loadUser(userObj) {
+	user = new User(userObj.name, userObj.email);
+	
+	$("#login").addClass("hidden");
+	// userInfo = document.createElement("div");
+	// userInfo.id = "user-info";
+
+	userName = document.createElement("div");
+	userName.id = "user-name";
+	userName.innerText = user.name
+	$("#user-info").append(userName)
+
+	// wins = document.createElement("div");
+	// wins.id = "wins";
+	// wins.innerText = user.wins
+};
 
 
