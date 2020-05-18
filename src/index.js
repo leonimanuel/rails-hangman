@@ -32,24 +32,36 @@ function showSub(e, c, subcArray) {
 		div.innerText = subc.name;
 
 		div.addEventListener("click", function() {
-			startGame(e, c, subc)
+			getPhrase(e, c, subc)
 		})
 
 		$("div#subcategories").append(div)	
 	}
 }
 
-function startGame(e, cObj, subcObj) {
-	console.log(subcObj.id)
-	// fetch(`http://localhost:3000/subcategory/${subc.id}`)
-	// game = new Game(cObj.name, subcObj.name, )
-	// console.log(category)
-	// console.log(subcategory)
+function getPhrase(e, cObj, subcObj) {
+	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
+		.then(resp => resp.json())
+		.then(function(subcObj) {
+			let randomPhrase = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)].content
+			startGame(subcObj, randomPhrase)
+			// console.log(randomPhraseObj.content)
+		})
+}
+
+function startGame(subc, phrase) {
+	// console.log("starting game")
+	let game = new Game(subc, phrase)
+
+	let div = document.createElement("div")
+	div.innerText = game.phrase
+	div.id = "phrase"
+	$("div#board").append(div)
 }
 
 class Game {
-	constructor(category, subcategory, phrase) {
-		this.category = category;
+	constructor(subcategory, phrase) {
+		// this.category = category;
 		this.subcategory = subcategory;
 		this.phrase = phrase
 		// this.turns = turns;

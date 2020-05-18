@@ -20,3 +20,15 @@ reptiles = Subcategory.create(name: "Reptiles", category: animals)
 state_capitals = Subcategory.create(name: "State Capitals", category: geography)
 countries = Subcategory.create(name: "Countries", category: geography)
 landmarks = Subcategory.create(name: "Landmarks", category: geography)
+
+phrase1 = Phrase.create(content: "pidgeon", hint: "coo", subcategory: birds);
+phrase2 = Phrase.create(content: "eagle", hint: "valor", subcategory: birds);
+phrase3 = Phrase.create(content: "raven", hint: "caw", subcategory: birds);
+
+
+
+
+
+
+
+
