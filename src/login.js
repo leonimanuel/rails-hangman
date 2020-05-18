@@ -24,10 +24,14 @@ function logIn() {
 	fetch("http://localhost:3000/login", configObj)
 		.then(resp => resp.json())
 		.then(function(object) {
-			console.log(object)
+			if (object.name) {
+				console.log(object.name)
+			} else {
+				console.log(object.message)
+			}
 		})
 		.catch(function(error) {
-			console.log(error.message)
+			console.log(error.messsage)
 		})
 
 }
