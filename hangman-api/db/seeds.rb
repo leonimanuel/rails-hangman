@@ -39,8 +39,6 @@ Phrase.create(content: "Napolean Dynamite", hint: "Vote for Pedro.", subcategory
 Phrase.create(content: "Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb", hint: "You're gonna have to answer to the Coca-Cola company.", subcategory: comedy);
 
 
-
-
-
-
+challenge1 = Challenge.create(phrase: "Rampage", hint: "George", user: User.find(1), recipient: User.find(4))
+challenge2 = Challenge.create(phrase: "Sharknado", hint: "A phenomenal cinematic masterpiece", user: megan, recipient: billy)
 
