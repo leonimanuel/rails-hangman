@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
 	def update
 		user = User.find(params[:id])
-		if params[:result] == "win"
+		if params[:result] == "WIN"
 			user.wins += 1
-		elsif params[:result] == "lose"
+		elsif params[:result] == "LOSE"
 			user.losses += 1
 		end
 		user.save

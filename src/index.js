@@ -112,6 +112,7 @@ function submitGuess(guess) {
 }
 
 function gameOver(result) {
+	console.log("executing gameOver")
 	if (user) {
 		console.log("right here baby")
 		let configObj = {
@@ -130,7 +131,8 @@ function gameOver(result) {
 			.then(function(object) {
 				user.wins = object.wins
 				user.losses = object.losses
-				console.log("updated wins/losses")
+				console.log(`new wins: ${object.wins}`)
+				console.log(`new losses: ${object.losses}`)
 				updateScoreboard()
 			})
 			.catch(function(error) {
