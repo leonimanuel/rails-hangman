@@ -34,7 +34,7 @@ function createChallengeForm() {
 		</div>\
 		')
 
-	$("#submit-challenge-button").addEventListener("click", submitChallenge())
+	$("#submit-challenge-button")[0].addEventListener("click", submitChallenge())
 }
 
 function submitChallenge() {
