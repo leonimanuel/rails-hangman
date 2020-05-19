@@ -62,8 +62,8 @@ function startGame(subcObj) {
 		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
 	}
 
-	let phraseArr = game.phraseContent.split("")
-	for (let letter of phraseArr) {
+	let wordArr = game.phraseContent.split("")
+	for (let letter of wordArr) {
 		let letterBox = document.createElement("div")
 		letterBox.classList.add("letter-box", `letter-${letter}`)
 		// letterBox.classlist.add(`letter-${letter}`)

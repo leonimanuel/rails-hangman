@@ -32,6 +32,11 @@ phrase1 = Phrase.create(content: "pidgeon", hint: "coo", subcategory: birds);
 phrase2 = Phrase.create(content: "eagle", hint: "valor", subcategory: birds);
 phrase3 = Phrase.create(content: "raven", hint: "caw", subcategory: birds);
 
+Phrase.create(content: "The Big Lebowski", hint: "Nice marmot.", subcategory: comedy);
+Phrase.create(content: "In Bruges", hint: "You've got to stick to your principles.", subcategory: comedy);
+Phrase.create(content: "The Princess Bride", hint: "You're trying to kidnap what I've rightfully stolen.", subcategory: comedy);
+Phrase.create(content: "Napolean Dynamite", hint: "Vote for Pedro.", subcategory: comedy);
+Phrase.create(content: "Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb", hint: "You're gonna have to answer to the Coca-Cola company.", subcategory: comedy);
 
 
 
