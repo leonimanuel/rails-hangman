@@ -62,14 +62,24 @@ function startGame(subcObj) {
 		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
 	}
 
-	let wordArr = game.phraseContent.split("")
-	for (let letter of wordArr) {
-		let letterBox = document.createElement("div")
-		letterBox.classList.add("letter-box", `letter-${letter}`)
-		// letterBox.classlist.add(`letter-${letter}`)
-		letterBox.innerText = letter
-		$("div#board").append(letterBox)
-	}
+	let phraseArr = game.phraseContent.toUpperCase().split(" ")
+	for (word of phraseArr) {
+		let wordArr = word.split("")
+
+		for (let letter of wordArr) {
+			let letterBox = document.createElement("div")
+			letterBox.classList.add("letter-box", `letter-${letter}`)
+			// letterBox.classlist.add(`letter-${letter}`)
+			letterBox.innerText = letter
+			$("div#board").append(letterBox)
+		}
+		let space = document.createElement("div");
+		space.id = "space"
+		space.innerText = "--"
+		$("div#board").append(space)
+	}	
+
+
 }
 
 //ADD LISTENER for #guess-box
@@ -87,6 +97,8 @@ function submitGuess(guess) {
 	let guessedBox = document.createElement("div")
 	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
 	guessedBox.innerText = guess
+
+	guess = guess.toUpperCase()
 
 	if (game.phraseContent.includes(guess)) {
 		guessedBox.style.color = "green"

@@ -1,5 +1,6 @@
 body {
 	background-color: beige;
+	font-family: monospace;
 }
 
 #categories, #subcategories, #board {
@@ -10,6 +11,10 @@ body {
 
 #board {
 	margin-top: 50px;
+}
+
+#space {
+	color: transparent;
 }
 
 .category, .subcategory {
