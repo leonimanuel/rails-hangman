@@ -3,3 +3,4 @@ $("#hint-header")[0].addEventListener("click", function() {
 	let hint = game.hint
 	$("#hint-box").append(hint)
 })
+

@@ -55,6 +55,7 @@ function getPhrase(e, cObj, subcObj) {
 function startGame(subcObj) {
 	$("div#board").empty()
 	$("#guesses-box").empty()
+	$("#hint-box").empty()
 
 	game = new Game(subcObj)
 
