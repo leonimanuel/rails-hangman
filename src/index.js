@@ -59,9 +59,7 @@ function startGame(subcObj) {
 	game = new Game(subcObj)
 
 	if ($("#hangman-picture")[0].classList.contains("top")) {
-		setTimeout(function() {
-			$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
-		}, 1000)
+		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
 	}
 
 	let phraseArr = game.phraseContent.split("")
