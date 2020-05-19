@@ -3,50 +3,6 @@
 let game
 let user
 
-class Game {
-	constructor(subcObj) {
-		// this.category = category;
-		this.subcObj = subcObj;
-		this.phraseObj = this.subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
-		this.phraseContent = this.phraseObj.content;
-		this.hint = this.phraseObj.hint
-		this.strikes = 0
-		this.hangmanTranslateHorizontal = 0
-		this.hangmanTranslateVertical = 0
-		this.goodGuesses = 0
-		// this.turns = turns;
-		// this.result = result;
-	}
-
-	addGoodGuess() {
-		this.goodGuesses += 1
-		if (this.goodGuesses === this.phraseContent.length) {
-			gameOver("win")
-		}
-	}
-
-	addStrike() {
-		this.strikes += 1
-		if (this.strikes >= 5) {
-			gameOver("lose")
-		}
-	}
-}
-
-class User {
-	constructor(id, name, email, wins, losses) {
-		this.id = id
-		this.name = name;
-		this.email = email
-		this.wins = wins
-		this.losses = losses
-	}
-
-	// get wins() {
-	// 	this.wins =
-	// }
-}
-
 (function getCategories() {
 	fetch("http://localhost:3000/categories")
 		.then(resp => resp.json())
@@ -184,16 +140,16 @@ function gameOver(result) {
 			})					
 	}
 	
-	if (result === "win") {
+	if (result === "WIN") {
 		console.log("You just saved my neck, partner")
 
-	} else if (result === "lose") {
+	} else if (result === "LOSE") {
 		console.log("Hang me, oh hang me")
 	}
 	
 	$("#hangman-picture").addClass("top")
-
-	startGame(game.subcObj)
+	
+	gameOverPopup(result)
 };
 
 function updateScoreboard() {
@@ -204,4 +160,37 @@ function updateScoreboard() {
 	losses = document.getElementById("losses")
 	losses.innerText = `losses: ${user.losses}`
 }
+
+function gameOverPopup(result) {
+	console.log("game over bubeleh")
+	$("#game-over-popup").removeClass("hidden");
+	$("#game-over-header").text(`YOU ${result}`)
+	$("#play-again-button-container")[0].addEventListener("click", function() {
+		$("#game-over-popup").addClass("hidden");
+		startGame(game.subcObj);
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
