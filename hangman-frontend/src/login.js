@@ -69,6 +69,8 @@ function loadUser(userObj) {
 	challengesButton.id = "challenges-button";
 	challengesButton.innerText = "challenges"
 	$("#user-info").append(challengesButton)
+	$("#challenges-button")[0].addEventListener("click", createChallengePopup)
+
 };
 
 
