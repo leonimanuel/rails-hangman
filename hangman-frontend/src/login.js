@@ -49,21 +49,26 @@ function loadUser(userObj) {
 	// userInfo = document.createElement("div");
 	// userInfo.id = "user-info";
 
-	userName = document.createElement("div");
+	let userName = document.createElement("div");
 	userName.id = "user-name";
 	userName.innerText = user.name
 	$("#user-info").append(userName)
 
-	wins = document.createElement("div");
+	let wins = document.createElement("div");
 	wins.id = "wins";
 	wins.innerText = `wins: ${user.wins}`
 
-	losses = document.createElement("div");
+	let losses = document.createElement("div");
 	losses.id = "losses";
 	losses.innerText = `losses: ${user.losses}`
 
 	$("#user-info").append(wins)
 	$("#user-info").append(losses)
+
+	let challengesButton = document.createElement("div");
+	challengesButton.id = "challenges-button";
+	challengesButton.innerText = "challenges"
+	$("#user-info").append(challengesButton)
 };
 
 
