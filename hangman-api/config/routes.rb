@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :challenges
   resources :phrases
   resources :subcategories
   resources :categories
