@@ -3,6 +3,10 @@ body {
 	font-family: monospace;
 }
 
+div {
+	border: 2px solid green;
+}
+
 #categories, #subcategories, #board {
 	display: flex;
 	justify-content: center;
