@@ -19,9 +19,8 @@ class Game {
 
 	addGoodGuess() {
 		this.goodGuesses += 1
-		console.log("goodguesses baby: " + this.goodGuesses)
 		if (this.goodGuesses === this.phraseContent.split(" ").join("").length) {
-			console.log("executing goodguess/win")
+			// console.log("executing goodguess/win")
 			gameOver("WIN")
 		}
 	}

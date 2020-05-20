@@ -140,7 +140,6 @@ function gameOver(result) {
 		console.log("set gameType equal to category")
 	}
 
-	console.log(gameType)
 	if (user) {
 		let configObj = {
 			method: "PATCH",
@@ -174,9 +173,10 @@ function gameOver(result) {
 	$("#hangman-picture").addClass("top")
 	
 	if (!game.subcategoryId) { // aka If this was a challenge
+		setTimeout(function() {
+			createChallengePopup()
+			}, 1200)
 		// updateUserChallenges(result)
-		createChallengePopup()
-
 	} else {
 		gameOverPopup(result)
 	}

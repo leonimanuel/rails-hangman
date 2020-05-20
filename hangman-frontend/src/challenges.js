@@ -14,14 +14,16 @@ $("#challenges-close-button")[0].addEventListener("click", function() {
 
 function createChallengePopup() {
 	console.log("Executing createChallengePopup")
+	$("#challenges-container").empty();
 	$("#challenge-popup-outer").removeClass("hidden")
 }
 
 function showChallenges(challengeType) {
 	console.log("executing showChallenges")
-	$("#challenges-container").empty();
+	
 	if (challengeType === "received") {
 		for (let challenge of user.receivedChallengesObjArr) {
+			console.log(`content: ${challenge.content}, solved: ${challenge.solved}, result: ${challenge.result}`)
 			// console.log(challenge)
 			let challengeDiv = document.createElement("div");
 			challengeDiv.id = `challenge-${challenge.id}`;
