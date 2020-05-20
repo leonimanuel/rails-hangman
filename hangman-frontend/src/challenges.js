@@ -1,5 +1,11 @@
 function createChallengePopup() {
 	$("#challenge-popup-outer").removeClass("hidden")
+	$("#sent-challenges-button")[0].addEventListener("click", function() {
+		showChallenges("sent")
+	})
+	$("#received-challenges-button")[0].addEventListener("click", function() {
+		showChallenges("received")
+	})
 	// let challengePopup = document.createElement("div");
 	// challengePopup.id = "challenge-popup"
 	// $("#user-info").append(challengePopup);
@@ -18,6 +24,26 @@ function createChallengePopup() {
 	$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
 }
 
+function showChallenges(challengeType) {
+	if (challengeType === "received") {
+		$("#challenges-container").empty();
+		for (challenge of user.receivedChallengesObjArr) {
+			// console.log(challenge)
+			let challengeDiv = document.createElement("div");
+			challengeDiv.id = `challenge-${challenge.id}`;
+			if (challenge.solved === false) {
+				challengeDiv.style.backgroundColor = "yellow"
+			}
+
+
+			challengeDiv.innerText = challenge.hint;
+			$("#challenges-container").append(challengeDiv);
+
+			// let challenge
+		}
+	}
+}
+
 function showChallengeForm() {
 	// $("#challenges-form-container").removeClass("hidden")
 	// console.log("creating challenge form")
@@ -34,7 +60,7 @@ function showChallengeForm() {
 		</div>\
 		')
 
-	// $("#submit-challenge-button")[0].addEventListener("click", submitChallenge)
+	$("#submit-challenge-button")[0].addEventListener("click", submitChallenge)
 }
 
 function submitChallenge() {
