@@ -67,6 +67,11 @@ function submitChallenge() {
  
 function updateChallenges() {
 	console.log("updating challenges")
+	fetch(`http://localhost:3000/users/${user.id}`)
+		.then(resp => resp.json())
+		.then(function(object) {
+			console.log(object)
+		})
 }
 
 
