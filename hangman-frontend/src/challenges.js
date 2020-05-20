@@ -33,19 +33,28 @@ function showChallenges(challengeType) {
 			challengeDiv.id = `challenge-${challenge.id}`;
 			challengeDiv.classList.add("challenge-box");
 
-			if (challenge.solved === false) {
-				challengeDiv.style.backgroundColor = "yellow"
-			} else if (challenge.solved === true && challenge.result === "won") {				
-				challengeDiv.style.backgroundColor = "green"
-			} else if (challenge.solved === true && challenge.result === "lost") {				
-				challengeDiv.style.backgroundColor = "red"
-			} 
-
 			challengeDiv.innerHTML = `
-				<div class="challenge-info">${challenge.hint}</div>\
-				<div class="challenge-info">${challenge.user.name}</div>
+				<div id="challenge-details-container">
+					<div class="challenge-detail">${challenge.user.name}</div>
+					<div class="challenge-detail">${challenge.hint}</div>
+				</div>
 				`;
 			$("#challenges-container").append(challengeDiv);
+
+			if (challenge.solved === false) {
+				let play = document.createElement("div");
+				play.innerText = "PLAY";
+				$(`#challenge-${challenge.id}`).append(play)
+			} else if (challenge.solved === true && challenge.result === "won") {				
+				// challengeDiv.style.backgroundColor = "green"
+					let won = document.createElement("div");
+					won.innerText = "WON";
+					$(`#challenge-${challenge.id}`).append(won)
+			} else if (challenge.solved === true && challenge.result === "lost") {				
+					let lost = document.createElement("div");
+					lost.innerText = "LOST";
+					$(`#challenge-${challenge.id}`).append(lost)
+			} 
 		}
 	} else if (challengeType === "sent") {
 			$("#challenges-container").empty();
@@ -54,9 +63,9 @@ function showChallenges(challengeType) {
 				let challengeDiv = document.createElement("div");
 				challengeDiv.id = `challenge-${challenge.id}`;
 				challengeDiv.classList.add("challenge-box");
-				
+
 				if (challenge.solved === false) {
-					challengeDiv.style.backgroundColor = "yellow"
+					// challengeDiv.style.backgroundColor = "yellow"
 				} else if (challenge.solved === true && challenge.result === "won") {				
 					challengeDiv.style.backgroundColor = "green"
 				} else if (challenge.solved === true && challenge.result === "lost") {				
@@ -64,8 +73,10 @@ function showChallenges(challengeType) {
 				} 
 
 				challengeDiv.innerHTML = `
-					<div class="challenge-detail">${challenge.hint}</div>\
-					<div class="challenge-detail">${challenge.recipient.name}</div>
+					<div id="challenge-details-container">
+						<div class="challenge-detail">${challenge.hint}</div> <br>
+						<div class="challenge-detail">${challenge.recipient.name}</div>
+					</div>
 					`;
 				$("#challenges-container").append(challengeDiv);
 			}
