@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 		if params[:game_type] == "challenge"
 			challenge = Challenge.find_by(content: params[:game_phrase])
-			challenge.update(solved: true, result: result)
+			challenge.update(solved: true, result: params[:result])
 		end
 
 		user.save
