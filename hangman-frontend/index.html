@@ -25,18 +25,26 @@
 		</div>
 	</div>
 
-	<div id="challenge-form">
-		<label for="challenge-recipient">Recipient: </label>
-		<input type="text" id="challenge-recipient" name="recipient"> <br>
+	<div id="challenge-popup-outer" class="hidden">
+		<div id="challenge-popup-inner">
+			<h3 id="challenge-popup-header">CHALLENGES</h3>
+			<div id="challenges-container">
+				<button id="received-challenges-button">Sent Challenges</button>
+				<button id="sent-challenges-button">Received Challenges</button>
+			</div>
 
-		<label for="challenge-phrase">Phrase: </label>
-		<input type="text" id="challenge-phrase" name="phrase"> <br>
-
-		<label for="challenge-hint">Hint: </label>
-		<input type="text" id="challenge-hint" name="hint">
-
-		<button id="submit-challenge-button">submit challenge</button>
+			<div id="challenges-form-container">
+				<label for="challenge-recipient">Recipient: </label>
+				<input type="text" id="challenge-recipient-input" name="recipient"> <br>
+				<label for="challenge-phrase">Phrase: </label>
+				<input type="text" id="challenge-phrase-input" name="phrase"> <br>
+				<label for="challenge-hint">Hint: </label>
+				<input type="text" id="challenge-hint-input" name="hint"> <br>
+				<button id="submit-challenge-button">submit challenge</button>
+			</div>		
+		</div>			
 	</div>
+
 
 	<div id="game-over-popup" class="hidden">
 		<span id="game-over-header">RESULT</span>

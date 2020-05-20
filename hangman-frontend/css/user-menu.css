@@ -16,7 +16,7 @@
 	background-color: purple;
 }
 
-#challenge-popup {
+#challenge-popup-outer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,6 +25,14 @@
   border: 2px solid pink;
 
   background-color: snow;
+}
+
+#challenge-popup-inner {
+
+	margin: 10px;
+  border: 1px solid purple;
+
+  /*background-color: snow;*/
 }
 
 /*maybe group with challenges-button*/

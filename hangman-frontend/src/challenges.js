@@ -1,38 +1,40 @@
 function createChallengePopup() {
-	let challengePopup = document.createElement("div");
-	challengePopup.id = "challenge-popup"
-	$("#user-info").append(challengePopup);
+	$("#challenge-popup-outer").removeClass("hidden")
+	// let challengePopup = document.createElement("div");
+	// challengePopup.id = "challenge-popup"
+	// $("#user-info").append(challengePopup);
 
-	let challengePopupHeader = document.createElement("div");
-	challengePopupHeader.id = "challenge-popup-header"
-	challengePopupHeader.innerText = "CHALLENGES"
-	$("#challenge-popup").append(challengePopupHeader)
+	// let challengePopupHeader = document.createElement("div");
+	// challengePopupHeader.id = "challenge-popup-header"
+	// challengePopupHeader.innerText = "CHALLENGES"
+	// $("#challenge-popup").append(challengePopupHeader)
 
 
-	let createChallengeButton = document.createElement("div");
-	createChallengeButton.id = "create-challenge-button";
-	createChallengeButton.innerText = "Create Challenge";
-	$("#challenge-popup").append(createChallengeButton);
+	// let createChallengeButton = document.createElement("div");
+	// createChallengeButton.id = "create-challenge-button";
+	// createChallengeButton.innerText = "Create Challenge";
+	// $("#challenge-popup").append(createChallengeButton);
 
-	createChallengeButton.addEventListener("click", createChallengeForm)
+	$("#").addEventListener("click", createChallengeForm)
 }
 
 function createChallengeForm() {
+	// $("#")
 	// console.log("creating challenge form")
-	$("#challenge-popup").empty();
-	$("#challenge-popup").html('\
-		<div id="challenge-form-container">\
-				<label for="challenge-recipient">Recipient: </label>\
-				<input type="text" id="challenge-recipient-input" name="recipient"> <br>\
-				<label for="challenge-phrase">Phrase: </label>\
-				<input type="text" id="challenge-phrase-input" name="phrase"> <br>\
-				<label for="challenge-hint">Hint: </label>\
-				<input type="text" id="challenge-hint-input" name="hint"> <br>\
-				<button id="submit-challenge-button">submit challenge</button>\
-		</div>\
-		')
+	// $("#challenge-popup").empty();
+	// $("#challenge-popup").html('\
+	// 	<div id="challenge-form-container">\
+	// 			<label for="challenge-recipient">Recipient: </label>\
+	// 			<input type="text" id="challenge-recipient-input" name="recipient"> <br>\
+	// 			<label for="challenge-phrase">Phrase: </label>\
+	// 			<input type="text" id="challenge-phrase-input" name="phrase"> <br>\
+	// 			<label for="challenge-hint">Hint: </label>\
+	// 			<input type="text" id="challenge-hint-input" name="hint"> <br>\
+	// 			<button id="submit-challenge-button">submit challenge</button>\
+	// 	</div>\
+	// 	')
 
-	$("#submit-challenge-button")[0].addEventListener("click", submitChallenge)
+	// $("#submit-challenge-button")[0].addEventListener("click", submitChallenge)
 }
 
 function submitChallenge() {
