@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_215641) do
+ActiveRecord::Schema.define(version: 2020_05_20_043929) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_215641) do
   end
 
   create_table "challenges", force: :cascade do |t|
-    t.string "phrase"
+    t.string "content"
     t.string "hint"
     t.integer "user_id", null: false
     t.integer "recipient_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_215641) do
     t.string "hint"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "subcategory_id", null: false
+    t.integer "subcategory_id"
   end
 
   create_table "subcategories", force: :cascade do |t|

@@ -3,12 +3,13 @@ class ChallengesController < ApplicationController
 		# binding.pry
 		challenge = Challenge.new(
 			recipient: User.find_by(name: params[:challenge][:recipient_name]),
-			phrase: params[:challenge][:phrase], 
+			content: params[:challenge][:phrase], 
 			hint: params[:challenge][:hint],
 			user: User.find(params[:challenge][:user_id])
 		)
 		if challenge.valid?
 			challenge.save
+			# phrase = Phrase.create(content: params[:challenge][:phrase], hint: params[:challenge][:hint])
 			redirect_to challenge_path(challenge)	
 		else
 			render json: { errors: challenge.errors }, status: 422
