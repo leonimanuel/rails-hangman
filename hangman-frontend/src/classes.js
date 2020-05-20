@@ -29,12 +29,14 @@ class Game {
 }
 
 class User {
-	constructor(id, name, email, wins, losses) {
+	constructor(id, name, email, wins, losses, sentChallengesObj, receivedChallengesObj) {
 		this.id = id
 		this.name = name;
 		this.email = email
 		this.wins = wins
 		this.losses = losses
+		this.sentChallengesObj = sentChallengesObj
+		this.receivedChallengesObj = receivedChallengesObj
 	}
 
 	// get wins() {
