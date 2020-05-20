@@ -149,6 +149,34 @@ function updateChallenges() {
 		})
 }
 
+function updateUserChallenges(result) {
+	let configObj = {
+		method: "PATCH",
+		headers: {
+			"Content_Type": "application/json",
+			Accept: "application/json"
+		},
+		body: JSON.stringify({
+			solved: true,
+			result: result
+		})
+	}
+
+	fetch(`http://localhost:3000/challenges/${game.phraseId}`, configObj)
+		.then(resp => resp.json())
+		.then(function(userObj) {
+			user.receivedChallengesObjArr = userObj.received_challenges
+			user.sentChallengesObjArr = userObj.sent_challenges
+			console.log(`UPDATED USER CHALLENGES`)
+		})
+		.catch(function(err) {
+			console.log(err.message)
+		})
+
+	setTimeout(function() {
+		createChallengePopup()
+	}, 1500)
+}
 
 
 

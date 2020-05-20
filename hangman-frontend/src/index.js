@@ -108,11 +108,10 @@ function submitGuess(guess) {
 	guess = guess.toUpperCase()
 
 	if (game.phraseContent.toUpperCase().includes(guess)) {
-		console.log("yippie kay yay")
+		// console.log("yippie kay yay")
 		guessedBox.style.color = "green"
 		$("#guesses-box").append(guessedBox)
 
-		console.log("sweet")
 		for (let div of $("div.letter-box")) {
 			if (div.innerText === guess) {
 				div.style.color = "green"
@@ -124,7 +123,6 @@ function submitGuess(guess) {
 		guessedBox.style.color = "red"
 		$("#guesses-box").append(guessedBox)
 
-		console.log("eyo")
 		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
 
 		game.addStrike()
@@ -133,8 +131,17 @@ function submitGuess(guess) {
 
 function gameOver(result) {
 	console.log("executing gameOver")
+	let gameType
+
+	if (!game.subcategoryId) {
+		gameType = "challenge"
+	} else {
+		gameType = "category"
+		console.log("set gameType equal to category")
+	}
+
+	console.log(gameType)
 	if (user) {
-		console.log("right here baby")
 		let configObj = {
 			method: "PATCH",
 			headers: {
@@ -142,17 +149,22 @@ function gameOver(result) {
 				Accept: "application/json"
 			},
 			body: JSON.stringify({
-				result: result
+				// solved: true
+				game_type: gameType,
+				result: result,
+				game_phrase: game.phraseContent
 			})
 		}
 
 		fetch(`http://localhost:3000/users/${user.id}`, configObj)
 			.then(resp => resp.json())
-			.then(function(object) {
-				user.wins = object.wins
-				user.losses = object.losses
-				console.log(`new wins: ${object.wins}`)
-				console.log(`new losses: ${object.losses}`)
+			.then(function(userObj) {
+				user = new User(userObj)
+				console.log("SET NEW USER")
+				// user.wins = object.wins
+				// user.losses = object.losses
+				// console.log(`new wins: ${object.wins}`)
+				// console.log(`new losses: ${object.losses}`)
 			})
 			.catch(function(error) {
 				console.log(error.message)
@@ -162,40 +174,20 @@ function gameOver(result) {
 	$("#hangman-picture").addClass("top")
 	
 	if (!game.subcategoryId) { // aka If this was a challenge
-		console.log("lawdy")
-		let configObj = {
-			method: "PATCH",
-			headers: {
-				"Content_Type": "application/json",
-				Accept: "application/json"
-			},
-			body: JSON.stringify({
-				solved: true,
-				result: result
-			})
-		}
+		// updateUserChallenges(result)
+		createChallengePopup()
 
-		fetch(`http://localhost:3000/challenges/${game.phraseId}`, configObj)
-			.then(resp => resp.json())
-			.then(function(userObj) {
-				user = new User(userObj)
-				console.log(`UPDATED CHALLENGE STATUS, ${user.receivedChallengesObjArr[0].content}`)
-			})
-			.catch(function(err) {
-				console.log(err.message)
-			})
-
-		setTimeout(function() {
-			createChallengePopup()
-		}, 1500)
 	} else {
 		gameOverPopup(result)
 	}
-	updateScoreboard()
+
+	setTimeout(function() {
+		updateScoreboard()
+	}, 1000)
 };
 
 function updateScoreboard() {
-	console.log("updating scoreboard")
+	console.log(`updating scoreboard. updated wins: ${user.wins}. Updated losses: ${user.losses}`)
 	wins = document.getElementById("wins")
 	wins.innerText = `wins: ${user.wins}`
 
@@ -212,6 +204,7 @@ function gameOverPopup(result) {
 		startGame(subcObject.phrases[Math.floor(Math.random() * subcObject.phrases.length)]);
 	})
 }
+
 
 
 
