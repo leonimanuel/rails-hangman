@@ -1,8 +1,8 @@
 class Game {
-	constructor(subcObj) {
+	constructor(phraseObj) {
 		// this.category = category;
-		this.subcObj = subcObj;
-		this.phraseObj = this.subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+		// this.subcObj = subcObj;
+		this.phraseObj = phraseObj
 		this.phraseContent = this.phraseObj.content;
 		this.hint = this.phraseObj.hint
 		this.strikes = 0
