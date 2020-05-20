@@ -43,8 +43,15 @@ function showChallenges(challengeType) {
 
 			if (challenge.solved === false) {
 				let play = document.createElement("div");
+				play.id = `play-${challenge.id}`
 				play.innerText = "PLAY";
 				$(`#challenge-${challenge.id}`).append(play)
+				
+				$(`#play-${challenge.id}`)[0].addEventListener("click", function() {
+					$("#challenge-popup-outer").addClass("hidden")
+					startGame(challenge)
+				})
+
 			} else if (challenge.solved === true && challenge.result === "won") {				
 				// challengeDiv.style.backgroundColor = "green"
 					let won = document.createElement("div");
