@@ -1,0 +1,41 @@
+#challenges-button {
+	color: white;
+	
+	padding: 0 5px;
+	border: 1px solid purple;
+	border-radius: 5px;
+	background-color: purple;
+}
+
+#challenge-popup-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 2px solid pink;
+
+  background-color: snow;
+}
+
+#challenge-popup-inner {
+
+	margin: 10px;
+  border: 1px solid purple;
+
+  /*background-color: snow;*/
+}
+
+/*maybe group with challenges-button*/
+#create-challenge-button {
+	color: white;
+	
+	padding: 0 5px;
+	border: 1px solid purple;
+	border-radius: 5px;
+	background-color: purple;
+}
+
+#challenge-info {
+	/*background-color: transparent;*/
+}

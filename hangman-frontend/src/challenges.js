@@ -33,14 +33,38 @@ function showChallenges(challengeType) {
 			challengeDiv.id = `challenge-${challenge.id}`;
 			if (challenge.solved === false) {
 				challengeDiv.style.backgroundColor = "yellow"
-			}
+			} else if (challenge.solved === true && challenge.result === "won") {				
+				challengeDiv.style.backgroundColor = "green"
+			} else if (challenge.solved === true && challenge.result === "lost") {				
+				challengeDiv.style.backgroundColor = "red"
+			} 
 
-
-			challengeDiv.innerText = challenge.hint;
+			challengeDiv.innerHTML = `
+				<div class="challenge-info">${challenge.hint}</div>\
+				<div class="challenge-info">${challenge.user.name}</div>
+				`;
 			$("#challenges-container").append(challengeDiv);
-
-			// let challenge
 		}
+	} else if (challengeType === "sent") {
+			$("#challenges-container").empty();
+			for (challenge of user.sentChallengesObjArr) {
+				// console.log(challenge)
+				let challengeDiv = document.createElement("div");
+				challengeDiv.id = `challenge-${challenge.id}`;
+				if (challenge.solved === false) {
+					challengeDiv.style.backgroundColor = "yellow"
+				} else if (challenge.solved === true && challenge.result === "won") {				
+					challengeDiv.style.backgroundColor = "green"
+				} else if (challenge.solved === true && challenge.result === "lost") {				
+					challengeDiv.style.backgroundColor = "red"
+				} 
+
+				challengeDiv.innerHTML = `
+					<div class="challenge-info">${challenge.hint}</div>\
+					<div class="challenge-info">${challenge.recipient.name}</div>
+					`;
+				$("#challenges-container").append(challengeDiv);
+			}
 	}
 }
 

@@ -39,6 +39,21 @@ Phrase.create(content: "Napolean Dynamite", hint: "Vote for Pedro.", subcategory
 Phrase.create(content: "Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb", hint: "You're gonna have to answer to the Coca-Cola company.", subcategory: comedy);
 
 
-challenge1 = Challenge.create(phrase: "Rampage", hint: "George", user: User.find(1), recipient: User.find(4))
-challenge2 = Challenge.create(phrase: "Sharknado", hint: "A phenomenal cinematic masterpiece", user: megan, recipient: billy)
+Challenge.create(phrase: "Rampage", hint: "George", user: User.find(1), recipient: User.find(4))
+Challenge.create(phrase: "Bon viv", hint: "spiked seltzer", user: megan, recipient: billy)
+Challenge.create(phrase: "Charlie", hint: "Güt boy", user: billy, recipient: User.find(2))
+Challenge.create(phrase: "The Feed", hint: "Right in my eye", user: ashley, recipient: billy, solved: true, result: "won")
+Challenge.create(phrase: "Fleabag", hint: "Fleas", user: billy, recipient: User.find(2))
+Challenge.create(phrase: "Catcher in the Rye", hint: "Holden", user: claire, recipient: billy, solved: true, result: "lost")
+Challenge.create(phrase: "Inception", hint: "We have to go deeper.", user: billy, recipient: User.find(3))
+Challenge.create(phrase: "Sharknado", hint: "A phenomenal cinematic masterpiece", user: megan, recipient: User.find(3))
+
+
+
+
+
+
+
+
+
 
