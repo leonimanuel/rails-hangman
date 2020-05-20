@@ -1,4 +1,10 @@
 class ChallengesController < ApplicationController
+	def show
+		# binding.pry
+		challenge = Challenge.find(params[:id])
+		render json: ChallengeSerializer.new(challenge).to_serialized_json
+	end
+
 	def create
 		# binding.pry
 		challenge = Challenge.new(
@@ -16,10 +22,13 @@ class ChallengesController < ApplicationController
 		end
 	end
 
-	def show
-		binding.pry
+	def update
+		# binding.pry
 		challenge = Challenge.find(params[:id])
-		render json: ChallengeSerializer.new(challenge).to_serialized_json
+		challenge.update(solved: params[:solved], result: params[:result])
+		# binding.pry
+		# render json: ChallengeSerializer.new(challenge).to_serialized_json
+		redirect_to user_path(challenge.recipient)
 	end
 
 	private 

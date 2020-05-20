@@ -1,64 +1,61 @@
+$("#received-challenges-button")[0].addEventListener("click", function() {
+	showChallenges("received")
+})
+
+$("#sent-challenges-button")[0].addEventListener("click", function() {
+	showChallenges("sent")
+})
+
+$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
+
 function createChallengePopup() {
+	console.log("Executing createChallengePopup")
+	$("#challenges-container").empty();
 	$("#challenge-popup-outer").removeClass("hidden")
-	$("#sent-challenges-button")[0].addEventListener("click", function() {
-		showChallenges("sent")
-	})
-	$("#received-challenges-button")[0].addEventListener("click", function() {
-		showChallenges("received")
-	})
-	// let challengePopup = document.createElement("div");
-	// challengePopup.id = "challenge-popup"
-	// $("#user-info").append(challengePopup);
-
-	// let challengePopupHeader = document.createElement("div");
-	// challengePopupHeader.id = "challenge-popup-header"
-	// challengePopupHeader.innerText = "CHALLENGES"
-	// $("#challenge-popup").append(challengePopupHeader)
-
-
-	// let createChallengeButton = document.createElement("div");
-	// createChallengeButton.id = "create-challenge-button";
-	// createChallengeButton.innerText = "Create Challenge";
-	// $("#challenge-popup").append(createChallengeButton);
-
-	$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
 }
 
 function showChallenges(challengeType) {
+	console.log("executing showChallenges")
 	if (challengeType === "received") {
-		$("#challenges-container").empty();
-		for (challenge of user.receivedChallengesObjArr) {
+		for (let challenge of user.receivedChallengesObjArr) {
 			// console.log(challenge)
 			let challengeDiv = document.createElement("div");
 			challengeDiv.id = `challenge-${challenge.id}`;
 			challengeDiv.classList.add("challenge-box");
 
 			challengeDiv.innerHTML = `
-				<div id="challenge-details-container">
+				<div class="challenge-details-container">
 					<div class="challenge-detail">${challenge.user.name}</div>
 					<div class="challenge-detail">${challenge.hint}</div>
 				</div>
 				`;
+
 			$("#challenges-container").append(challengeDiv);
 
 			if (challenge.solved === false) {
+				console.log(`CHALLENGE "${challenge.content}" IS NOT SOLVED`)
 				let play = document.createElement("div");
 				play.id = `play-${challenge.id}`
+				play.className = "challenge-status"
 				play.innerText = "PLAY";
 				$(`#challenge-${challenge.id}`).append(play)
 				
 				$(`#play-${challenge.id}`)[0].addEventListener("click", function() {
 					$("#challenge-popup-outer").addClass("hidden")
+					// console.log(challenge.id)
 					startGame(challenge)
 				})
-
-			} else if (challenge.solved === true && challenge.result === "won") {				
+			} else if (challenge.solved === true && challenge.result === "WIN") {				
 				// challengeDiv.style.backgroundColor = "green"
+					console.log(`CHALLENGE "${challenge.content}" IS WON`)
 					let won = document.createElement("div");
+					won.className = "challenge-status"
 					won.innerText = "WON";
 					$(`#challenge-${challenge.id}`).append(won)
-			} else if (challenge.solved === true && challenge.result === "lost") {				
+			} else if (challenge.solved === true && challenge.result === "LOSE") {				
+					console.log(`CHALLENGE "${challenge.content}" IS LOST`)
 					let lost = document.createElement("div");
+					lost.className = "challenge-status"
 					lost.innerText = "LOST";
 					$(`#challenge-${challenge.id}`).append(lost)
 			} 

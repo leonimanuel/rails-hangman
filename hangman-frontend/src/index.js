@@ -2,6 +2,7 @@
 // console.log("yup")
 let game
 let user
+let subcObject
 
 (function getCategories() {
 	fetch("http://localhost:3000/categories")
@@ -46,18 +47,20 @@ function getPhrase(e, cObj, subcObj) {
 	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
 		.then(resp => resp.json())
 		.then(function(subcObj) {
+			subcObject = subcObj
 			let phraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+			console.log(phraseObj)
+
 			startGame(phraseObj)
-			// console.log(randomPhraseObj.content)
 		})
 }
 
-function startGame(subcObj) {
+function startGame(phraseObj) {
 	$("div#board").empty()
 	$("#guesses-box").empty()
 	$("#hint-box").empty()
 
-	game = new Game(subcObj)
+	game = new Game(phraseObj)
 
 	if ($("#hangman-picture")[0].classList.contains("top")) {
 		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal)}px, ${(game.hangmanTranslateVertical)}px)`});
@@ -74,6 +77,7 @@ function startGame(subcObj) {
 			letterBox.innerText = letter
 			$("div#board").append(letterBox)
 		}
+
 		let space = document.createElement("div");
 		space.id = "space"
 		space.innerText = "--"
@@ -149,23 +153,45 @@ function gameOver(result) {
 				user.losses = object.losses
 				console.log(`new wins: ${object.wins}`)
 				console.log(`new losses: ${object.losses}`)
-				updateScoreboard()
 			})
 			.catch(function(error) {
 				console.log(error.message)
 			})					
 	}
-	
-	if (result === "WIN") {
-		console.log("You just saved my neck, partner")
 
-	} else if (result === "LOSE") {
-		console.log("Hang me, oh hang me")
-	}
-	
 	$("#hangman-picture").addClass("top")
 	
-	gameOverPopup(result)
+	if (!game.subcategoryId) { // aka If this was a challenge
+		console.log("lawdy")
+		let configObj = {
+			method: "PATCH",
+			headers: {
+				"Content_Type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({
+				solved: true,
+				result: result
+			})
+		}
+
+		fetch(`http://localhost:3000/challenges/${game.phraseId}`, configObj)
+			.then(resp => resp.json())
+			.then(function(userObj) {
+				user = new User(userObj)
+				console.log(`UPDATED CHALLENGE STATUS, ${user.receivedChallengesObjArr[0].content}`)
+			})
+			.catch(function(err) {
+				console.log(err.message)
+			})
+
+		setTimeout(function() {
+			createChallengePopup()
+		}, 1500)
+	} else {
+		gameOverPopup(result)
+	}
+	updateScoreboard()
 };
 
 function updateScoreboard() {
@@ -183,7 +209,7 @@ function gameOverPopup(result) {
 	$("#game-over-header").text(`YOU ${result}`)
 	$("#play-again-button-container")[0].addEventListener("click", function() {
 		$("#game-over-popup").addClass("hidden");
-		startGame(game.subcObj);
+		startGame(subcObject.phrases[Math.floor(Math.random() * subcObject.phrases.length)]);
 	})
 }
 

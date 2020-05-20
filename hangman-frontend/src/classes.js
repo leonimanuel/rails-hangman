@@ -1,8 +1,12 @@
 class Game {
 	constructor(phraseObj) {
+		// console.log(phraseObj)
 		// this.category = category;
 		// this.subcObj = subcObj;
 		this.phraseObj = phraseObj
+		this.phraseId = phraseObj.id
+		this.subcategoryObj = phraseObj.subcategory	
+		this.subcategoryId = phraseObj.subcategory_id
 		this.phraseContent = this.phraseObj.content;
 		this.hint = this.phraseObj.hint
 		this.strikes = 0
@@ -15,7 +19,9 @@ class Game {
 
 	addGoodGuess() {
 		this.goodGuesses += 1
-		if (this.goodGuesses === this.phraseContent.length) {
+		console.log("goodguesses baby: " + this.goodGuesses)
+		if (this.goodGuesses === this.phraseContent.split(" ").join("").length) {
+			console.log("executing goodguess/win")
 			gameOver("WIN")
 		}
 	}
@@ -29,13 +35,13 @@ class Game {
 }
 
 class User {
-	constructor(subcObj) {
-		this.id = subcObj.id
-		this.name = subcObj.name;
-		this.email = subcObj.email
-		this.wins = subcObj.wins
-		this.losses = subcObj.losses
-		this.sentChallengesObjArr = subcObj.sent_challenges
-		this.receivedChallengesObjArr = subcObj.received_challenges
+	constructor(userObj) {
+		this.id = userObj.id
+		this.name = userObj.name;
+		this.email = userObj.email
+		this.wins = userObj.wins
+		this.losses = userObj.losses
+		this.receivedChallengesObjArr = userObj.received_challenges
+		this.sentChallengesObjArr = userObj.sent_challenges
 	}
 }

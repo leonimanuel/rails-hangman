@@ -7,7 +7,12 @@ class SubcategorySerializer
 		options = {
 			include: {
 				phrases: {
-					only: [:id, :content, :hint]
+					only: [:id, :content, :hint, :subcategory_id],
+					include: {
+						subcategory: {
+							except: [:created_at, :updated_at]
+						}
+					}
 				}
 			},
 			except: [:updated_at, :created_at]
