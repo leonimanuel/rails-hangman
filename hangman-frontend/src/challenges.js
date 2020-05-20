@@ -22,7 +22,6 @@ function createChallengeForm() {
 	$("#challenge-popup").empty();
 	$("#challenge-popup").html('\
 		<div id="challenge-form-container">\
-			<form id="challenge-form">\
 				<label for="challenge-recipient">Recipient: </label>\
 				<input type="text" id="challenge-recipient-input" name="recipient"> <br>\
 				<label for="challenge-phrase">Phrase: </label>\
@@ -30,14 +29,15 @@ function createChallengeForm() {
 				<label for="challenge-hint">Hint: </label>\
 				<input type="text" id="challenge-hint-input" name="hint"> <br>\
 				<button id="submit-challenge-button">submit challenge</button>\
-			</form>\
 		</div>\
 		')
 
-	$("#submit-challenge-button")[0].addEventListener("click", submitChallenge())
+	$("#submit-challenge-button")[0].addEventListener("click", submitChallenge)
 }
 
 function submitChallenge() {
+	// console.log("wwwwweird")
+
 	let configObj = {
 		method: "POST",
 		headers: {
@@ -45,9 +45,12 @@ function submitChallenge() {
 			Accept: "application/json"
 		},
 		body: JSON.stringify({
-			recipient: $("#challenge-recipient-input").val(),
-			phrase: $("#challenge-phrase-input").val(),
-			hint: $("#challenge-hint-input").val()
+			challenge: {
+				recipient_name: $("#challenge-recipient-input").val(),
+				phrase: $("#challenge-phrase-input").val(),
+				hint: $("#challenge-hint-input").val(),
+				user_id: user.id 			
+			}
 		})
 	}
 
