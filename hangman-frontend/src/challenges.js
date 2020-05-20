@@ -8,14 +8,18 @@ $("#sent-challenges-button")[0].addEventListener("click", function() {
 
 $("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
 
+$("#challenges-close-button")[0].addEventListener("click", function() {
+	$("#challenge-popup-outer").addClass("hidden")
+})
+
 function createChallengePopup() {
 	console.log("Executing createChallengePopup")
-	$("#challenges-container").empty();
 	$("#challenge-popup-outer").removeClass("hidden")
 }
 
 function showChallenges(challengeType) {
 	console.log("executing showChallenges")
+	$("#challenges-container").empty();
 	if (challengeType === "received") {
 		for (let challenge of user.receivedChallengesObjArr) {
 			// console.log(challenge)

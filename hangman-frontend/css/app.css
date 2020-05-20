@@ -57,7 +57,7 @@ body {
 	z-index: 2;
 }
 
-#close-button {
+.close-button {
 	display: inline-block;
 	margin-left: 95%;
 	color: red;
