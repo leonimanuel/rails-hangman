@@ -57,14 +57,17 @@ function submitChallenge() {
 	fetch("http://localhost:3000/challenges", configObj)
 		.then(resp => resp.json())
 		.then(function(object) {
-			console.log(object)
+			console.log(object);
+			updateChallenges()
 		})
 		.catch(function(error) {
 			console.log(error.message)
 		})
 }
  
-
+function updateChallenges() {
+	console.log("updating challenges")
+}
 
 
 
