@@ -46,8 +46,8 @@ function getPhrase(e, cObj, subcObj) {
 	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
 		.then(resp => resp.json())
 		.then(function(subcObj) {
-			// let randomPhraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
-			startGame(subcObj)
+			let phraseObj = subcObj.phrases[Math.floor(Math.random() * subcObj.phrases.length)]
+			startGame(phraseObj)
 			// console.log(randomPhraseObj.content)
 		})
 }
@@ -95,13 +95,16 @@ guessInput.addEventListener("keyup", function(e) {
 });
 
 function submitGuess(guess) {
+	console.log("submitting guess")
+
 	let guessedBox = document.createElement("div")
 	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
 	guessedBox.innerText = guess
 
 	guess = guess.toUpperCase()
 
-	if (game.phraseContent.includes(guess)) {
+	if (game.phraseContent.toUpperCase().includes(guess)) {
+		console.log("yippie kay yay")
 		guessedBox.style.color = "green"
 		$("#guesses-box").append(guessedBox)
 
