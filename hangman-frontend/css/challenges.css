@@ -36,6 +36,9 @@
 	background-color: purple;
 }
 
-#challenge-info {
-	/*background-color: transparent;*/
+.challenge-box {
+	/*display: none;*/
+	border: 2px solid pink;
+	border-radius: 10px;
+	margin: 5px 10px;
 }

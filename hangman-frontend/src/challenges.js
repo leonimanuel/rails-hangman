@@ -31,6 +31,8 @@ function showChallenges(challengeType) {
 			// console.log(challenge)
 			let challengeDiv = document.createElement("div");
 			challengeDiv.id = `challenge-${challenge.id}`;
+			challengeDiv.classList.add("challenge-box");
+
 			if (challenge.solved === false) {
 				challengeDiv.style.backgroundColor = "yellow"
 			} else if (challenge.solved === true && challenge.result === "won") {				
@@ -51,6 +53,8 @@ function showChallenges(challengeType) {
 				// console.log(challenge)
 				let challengeDiv = document.createElement("div");
 				challengeDiv.id = `challenge-${challenge.id}`;
+				challengeDiv.classList.add("challenge-box");
+				
 				if (challenge.solved === false) {
 					challengeDiv.style.backgroundColor = "yellow"
 				} else if (challenge.solved === true && challenge.result === "won") {				
@@ -60,8 +64,8 @@ function showChallenges(challengeType) {
 				} 
 
 				challengeDiv.innerHTML = `
-					<div class="challenge-info">${challenge.hint}</div>\
-					<div class="challenge-info">${challenge.recipient.name}</div>
+					<div class="challenge-detail">${challenge.hint}</div>\
+					<div class="challenge-detail">${challenge.recipient.name}</div>
 					`;
 				$("#challenges-container").append(challengeDiv);
 			}
