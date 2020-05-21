@@ -18,18 +18,18 @@ let subcObject
 					showSub(event, c, c.subcategories)
 				})
 
-				$("div#categories").prepend(div)
+				$("div#categories").append(div)
 			}
+
+		let random = document.createElement("div");
+		random.id = "random-phrase";
+		random.innerText = "Random";
+		$("#categories").append(random);
+		random.addEventListener("click", getRandomPhrase)
 		})
 		.catch(function(error) {
 			alert("failed bruh")
 		})
-	
-	let random = document.createElement("div");
-	random.id = "random-phrase";
-	random.innerText = "Random";
-	$("#categories").append(random);
-	random.addEventListener("click", getRandomPhrase)
 })()
 
 function showSub(e, c, subcArray) {
