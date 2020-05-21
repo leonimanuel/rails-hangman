@@ -16,6 +16,13 @@ div {
 
 #board {
 	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.word-box {
+	display: flex;
 }
 
 #space {
@@ -35,7 +42,7 @@ div {
 }
 
 #guess-container {
-	text-align: center;
+	/*text-align: center;*/
 	border: 1px solid blue;
 }
 

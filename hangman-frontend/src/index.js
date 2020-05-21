@@ -42,7 +42,7 @@ function showSub(e, c, subcArray) {
 		div.innerText = subc.name;
 
 		div.addEventListener("click", function() {
-			getPhrase(e, subcObj)
+			getPhrase(e, subc)
 		})
 
 		$("div#subcategories").append(div)	
@@ -72,8 +72,6 @@ function getRandomPhrase() {
 		.catch(function(err) {
 			alert(err.message)
 		})
-
-
 }
 
 function startGame(phraseObj) {
@@ -88,20 +86,25 @@ function startGame(phraseObj) {
 	}
 
 	let phraseArr = game.phraseContent.toUpperCase().split(" ")
-	for (word of phraseArr) {
-		let wordArr = word.split("")
+	for (let i = 0; i < phraseArr.length; i++) {
+		let wordArr = phraseArr[i].split("")
+		let wordBox = document.createElement("div");
+		wordBox.id = `word-box-${i}`
+		wordBox.className = "word-box"
+		$("#board").append(wordBox)
+
 
 		for (let letter of wordArr) {
 			let letterBox = document.createElement("div")
 			letterBox.classList.add("letter-box", `letter-${letter}`)
 			// letterBox.classlist.add(`letter-${letter}`)
 			letterBox.innerText = letter
-			$("div#board").append(letterBox)
+			$(`#word-box-${i}`).append(letterBox)
 		}
 
 		let space = document.createElement("div");
 		space.id = "space"
-		space.innerText = "--"
+		space.innerText = "---"
 		$("div#board").append(space)
 	}	
 
