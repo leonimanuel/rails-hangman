@@ -18,12 +18,18 @@ let subcObject
 					showSub(event, c, c.subcategories)
 				})
 
-				$("div#categories").append(div)
+				$("div#categories").prepend(div)
 			}
 		})
 		.catch(function(error) {
 			alert("failed bruh")
 		})
+	
+	let random = document.createElement("div");
+	random.id = "random-phrase";
+	random.innerText = "Random";
+	$("#categories").append(random);
+	random.addEventListener("click", getRandomPhrase)
 })()
 
 function showSub(e, c, subcArray) {
@@ -36,14 +42,14 @@ function showSub(e, c, subcArray) {
 		div.innerText = subc.name;
 
 		div.addEventListener("click", function() {
-			getPhrase(e, c, subc)
+			getPhrase(e, subcObj)
 		})
 
 		$("div#subcategories").append(div)	
 	}
 }
 
-function getPhrase(e, cObj, subcObj) {
+function getPhrase(e, subcObj) {
 	fetch(`http://localhost:3000/subcategories/${subcObj.id}`)
 		.then(resp => resp.json())
 		.then(function(subcObj) {
@@ -52,6 +58,18 @@ function getPhrase(e, cObj, subcObj) {
 			console.log(phraseObj)
 
 			startGame(phraseObj)
+		})
+}
+
+function getRandomPhrase() {
+	console.log("executing getRandomPhrase")
+	fetch("http://localhost:3000/phrases")
+		.then((resp => resp.json()))
+		.then(function(object) {
+			console.log(object)
+		})
+		.catch(function(err) {
+			alert(err.message)
 		})
 }
 
