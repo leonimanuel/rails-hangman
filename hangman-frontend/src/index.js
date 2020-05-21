@@ -67,10 +67,13 @@ function getRandomPhrase() {
 		.then((resp => resp.json()))
 		.then(function(object) {
 			console.log(object)
+			startGame(object)
 		})
 		.catch(function(err) {
 			alert(err.message)
 		})
+
+
 }
 
 function startGame(phraseObj) {
