@@ -45,8 +45,6 @@
 	</div>
 
 
-
-
 	<div id="game-over-popup" class="hidden">
 		<span id="game-over-header">RESULT</span>
 
@@ -58,23 +56,26 @@
 	<div id="categories"></div>
 	<div id="subcategories"></div>
 
-	<div id="guessed-container">
-		<h3>Guesses:</h3>
-		<div id="guesses-box"></div>
+	<div id="gallows-and-guesses">
+		<div id="gallows-wrapper">
+			<div id="gallows">
+				<img src="images/noose_man_cropped.png" id="gallows-man">
+				<div class="gallow-stand" id="gallow-pole"></div>
+				<div class="gallow-stand" id="gallow-floor"></div>
+				<div class="gallow-step" id="step-4"></div>
+				<div class="gallow-step" id="step-3"></div>
+				<div class="gallow-step" id="step-2"></div>
+				<div class="gallow-step" id="step-1"></div>
+				<img src="images/executioner_props.png" class="step0" id="hangman-picture">
+			</div>
+		</div>
+
+		<div id="guessed-container">
+			<div>Guesses:</div>
+			<div id="guesses-box"></div>
+		</div>		
 	</div>
 
-	<div id="gallows-wrapper">
-		<div id="gallows">
-			<img src="images/noose_man_cropped.png" id="gallows-man">
-			<div class="gallow-stand" id="gallow-pole"></div>
-			<div class="gallow-stand" id="gallow-floor"></div>
-			<div class="gallow-step" id="step-4"></div>
-			<div class="gallow-step" id="step-3"></div>
-			<div class="gallow-step" id="step-2"></div>
-			<div class="gallow-step" id="step-1"></div>
-			<img src="images/executioner_props.png" class="step0" id="hangman-picture">
-		</div>
-	</div>
 
 	<div id="hint-container">
 		<h3 id="hint-header">Hint</h3>

@@ -1,6 +1,18 @@
+#gallows-and-guesses {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+
+	border: 2px solid green;
+}
+
 #gallows-wrapper {
-	margin-top: 20px;
+	/*margin-top: 20px;*/
+	padding: 0 30px;
 	display: inline-block;
+
+	border: 2px solid orange;
 }
 
 #gallows {
@@ -69,3 +81,30 @@
 	grid-column: 15;
 	grid-row: 6;	
 }
+
+#guessed-container {
+	/*display: flex;*/
+	text-align: center;
+	font-size: 2em;
+	border: 2px solid black;
+	width: 30%;
+}
+
+#guesses-box {
+	margin: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	border: 2px solid gray;
+
+}
+
+.guessed-letter {
+	font-size: 1.5em;
+	margin: 0 5px;
+}
+
+
+
+

@@ -101,16 +101,16 @@ guessInput.addEventListener("keyup", function(e) {
 function submitGuess(guess) {
 	console.log("submitting guess")
 
-	let guessedBox = document.createElement("div")
-	guessedBox.classList.add("guessed-box", `guessed-${guess}`)
-	guessedBox.innerText = guess
+	let guessedLetter = document.createElement("div")
+	guessedLetter.classList.add("guessed-letter", `guessed-${guess}`)
+	guessedLetter.innerText = guess.toUpperCase()
 
 	guess = guess.toUpperCase()
 
 	if (game.phraseContent.toUpperCase().includes(guess)) {
 		// console.log("yippie kay yay")
-		guessedBox.style.color = "green"
-		$("#guesses-box").append(guessedBox)
+		guessedLetter.style.color = "green"
+		$("#guesses-box").append(guessedLetter)
 
 		for (let div of $("div.letter-box")) {
 			if (div.innerText === guess) {
@@ -120,8 +120,8 @@ function submitGuess(guess) {
 		}
 
 	} else {
-		guessedBox.style.color = "red"
-		$("#guesses-box").append(guessedBox)
+		guessedLetter.style.color = "red"
+		$("#guesses-box").append(guessedLetter)
 
 		$("#hangman-picture").css({'transform' : `translate(${(game.hangmanTranslateHorizontal -= 65)}px, ${(game.hangmanTranslateVertical -= 15)}px)`});
 

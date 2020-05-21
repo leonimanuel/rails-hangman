@@ -1,11 +1,12 @@
 body {
 	background-color: beige;
 	font-family: monospace;
+	text-align: center;
 }
 
-/*div {
-	border: 2px solid green;
-}*/
+div {
+	/*border: 2px solid green;*/
+}
 
 #categories, #subcategories, #board {
 	display: flex;
@@ -38,11 +39,6 @@ body {
 	border: 1px solid blue;
 }
 
-#guessed-container {
-	display: flex;
-	border: 2px solid black;
-	width: 30%;
-}
 
 #login-popup {
 	position: absolute;

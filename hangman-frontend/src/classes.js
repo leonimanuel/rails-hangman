@@ -27,7 +27,7 @@ class Game {
 
 	addStrike() {
 		this.strikes += 1
-		if (this.strikes >= 3) {
+		if (this.strikes >= 5) {
 			gameOver("LOSE")
 		}
 	}
