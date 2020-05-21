@@ -5,8 +5,6 @@ class PhrasesController < ApplicationController
 
 	def index
 		random_phrase = Phrase.all.sample
-		binding.pry
-		
 		render json: PhraseSerializer.new(random_phrase).to_serialized_json
 	end
 end

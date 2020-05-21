@@ -126,7 +126,7 @@ guessInput.addEventListener("keyup", function(e) {
 function submitGuess(guess) {
 	guess = guess.toUpperCase()
 	console.log("submitting guess")
-	console.log(guess.charCodeAt(0))
+	console.log(guess)
 
 	let guessedLetter = document.createElement("div")
 	guessedLetter.classList.add("guessed-letter", `guessed-${guess}`)
@@ -134,12 +134,8 @@ function submitGuess(guess) {
 
 	guess = guess.toUpperCase()
 
-	if (guess.charCodeAt(0) < 65 || guess.charCodeAt(0) > 90) {
-		guessError("Guess must be an English letter")
-	} else if (game.guessedLetters.includes(guess)) {
-		guessError("You already guessed that!")
-	} else {
-		$("#guess-error").remove()
+	if (validGuess(guess)) {
+		$("#guess-error").text("")
 		if (game.phraseContent.toUpperCase().includes(guess)) {
 			// console.log("yippie kay yay")
 			guessedLetter.style.color = "green"
@@ -162,6 +158,7 @@ function submitGuess(guess) {
 
 		game.guessedLetters.push(guess)
 	}
+
 }
 
 function gameOver(result) {
@@ -240,13 +237,21 @@ function gameOverPopup(result) {
 	})
 }
 
-
+function validGuess(guess) {
+	if (guess.charCodeAt(0) < 65 || guess.charCodeAt(0) > 90) {
+		guessError("Guess must be an English letter")
+	} else if (game.guessedLetters.includes(guess)) {
+		guessError("You already guessed that!")
+	} else if (guess === "") {
+		guessError("Please enter a guess")
+	} else {
+		return true
+	}
+}
 
 function guessError(errorString) {
-	let error = document.createElement("div")
-	error.innerText = errorString
-	error.id = "guess-error"
-	$("#guess-container").append(error)
+	$("#guess-error").text(errorString)
+	return false
 }
 
 
