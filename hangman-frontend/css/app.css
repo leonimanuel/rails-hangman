@@ -25,6 +25,10 @@ div {
 	display: flex;
 }
 
+#guess-input {
+	text-align: center;
+}
+
 #space {
 	color: transparent;
 }
