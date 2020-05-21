@@ -108,7 +108,8 @@ function startGame(phraseObj) {
 		$("div#board").append(space)
 	}	
 
-
+	$("#guess-container").removeClass("hidden");
+	$("#hint-container").removeClass("hidden");	
 }
 
 //ADD LISTENER for #guess-box
