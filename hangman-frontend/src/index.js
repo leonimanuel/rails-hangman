@@ -136,6 +136,8 @@ function submitGuess(guess) {
 
 	if (guess.charCodeAt(0) < 65 || guess.charCodeAt(0) > 90) {
 		guessError("Guess must be an English letter")
+	} else if (game.guessedLetters.includes(guess)) {
+		guessError("You already guessed that!")
 	} else {
 		$("#guess-error").remove()
 		if (game.phraseContent.toUpperCase().includes(guess)) {
@@ -157,6 +159,8 @@ function submitGuess(guess) {
 
 			game.addStrike()
 		}
+
+		game.guessedLetters.push(guess)
 	}
 }
 

@@ -13,6 +13,7 @@ class Game {
 		this.hangmanTranslateHorizontal = 0
 		this.hangmanTranslateVertical = 0
 		this.goodGuesses = 0
+		this.guessedLetters = []
 		// this.turns = turns;
 		// this.result = result;
 	}
