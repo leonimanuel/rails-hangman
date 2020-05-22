@@ -27,6 +27,10 @@
   /*background-color: snow;*/
 }
 
+/*#received-challenges-button {
+	background-color: pink;
+}*/
+
 /*maybe group with challenges-button*/
 #create-challenge-button {
 	color: white;
@@ -43,4 +47,8 @@
 	border: 2px solid black;
 	border-radius: 10px;
 	margin: 5px 10px;
+}
+
+.challenge-status {
+	/*cursor: pointer;*/
 }

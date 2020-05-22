@@ -1,5 +1,6 @@
 #user-info {
 	display: flex;
+	align-items: flex-end;
 }
 
 #user-info div {

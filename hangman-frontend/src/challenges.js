@@ -23,6 +23,8 @@ function createChallengePopup() {
 	$("#sent-challenges-button")[0].addEventListener("click", () => showChallenges("sent") )
 	$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
 	$("#challenges-close-button")[0].addEventListener( "click", () => $("#challenge-popup-outer").remove() );
+
+	$("#received-challenges-button")[0].click();
 }
 
 function showChallenges(challengeType) {
@@ -51,6 +53,8 @@ function showChallenges(challengeType) {
 				play.id = `play-${challenge.id}`
 				play.className = "challenge-status"
 				play.innerText = "PLAY";
+				play.style.color = "purple";
+				play.style.cursor = "pointer";
 				$(`#challenge-${challenge.id}`).append(play)
 				
 				$(`#play-${challenge.id}`)[0].addEventListener("click", function() {
@@ -64,12 +68,14 @@ function showChallenges(challengeType) {
 					let won = document.createElement("div");
 					won.className = "challenge-status"
 					won.innerText = "WON";
+					won.style.color = "green"
 					$(`#challenge-${challenge.id}`).append(won)
 			} else if (challenge.solved === true && challenge.result === "LOSE") {				
 					console.log(`CHALLENGE "${challenge.content}" IS LOST`)
 					let lost = document.createElement("div");
 					lost.className = "challenge-status"
 					lost.innerText = "LOST";
+					lost.style.color = "red"
 					$(`#challenge-${challenge.id}`).append(lost)
 			} 
 		}
@@ -92,17 +98,20 @@ function showChallenges(challengeType) {
 					let pend = document.createElement("div");
 					pend.className = "challenge-status"
 					pend.innerText = "PENDING";
+					pend.style.color = "orange"
 					$(`#challenge-${challenge.id}`).append(pend)
 				} else if (challenge.solved === true && challenge.result === "WIN") {				
 					// challengeDiv.style.backgroundColor = "green"
 						let won = document.createElement("div");
 						won.className = "challenge-status"
 						won.innerText = "WON";
+						won.style.color = "green"
 						$(`#challenge-${challenge.id}`).append(won)
 				} else if (challenge.solved === true && challenge.result === "LOSE") {				
 						let lost = document.createElement("div");
 						lost.className = "challenge-status"
 						lost.innerText = "LOST";
+						lost.style.color = "red"
 						$(`#challenge-${challenge.id}`).append(lost)
 				} 
 			}

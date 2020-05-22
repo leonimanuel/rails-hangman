@@ -1,6 +1,7 @@
 body {
 	/*background-color: beige;*/
 	background-image: url("../images/OldWestPaper.jpg");
+	background-size: cover;
 	font-family: 'Rye';
 
 	/*font-family: monospace;*/
