@@ -1,10 +1,25 @@
-const isLetterOrSpace = (letter) => (letter.charCodeAt(0) > 65 && letter.charCodeAt(0) < 90) || letter.charCodeAt(0) === 32;
+function isLetterOrSpace(letter) {
+	return (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90) || letter.charCodeAt(0) === 32
+}
 
-function validChallenge(input) {
-	if (input.toUpperCase().split("").every(isLetterOrSpace)) {
+
+function validChallenge() {
+	if (document.getElementById("challenge-phrase-error")) { $("#challenge-phrase-error").remove()}
+
+	if ($("#challenge-phrase-input").val().toUpperCase().split("").every(isLetterOrSpace)) {
+		// return true
 		console.log("gut")
+		return true;
 	} else {
+		// return false
 		console.log("bad")
+		console.log($("#challenge-phrase-input").val().toUpperCase().split(""))
+		let contentError = document.createElement("div");
+		contentError.id = "challenge-phrase-error"
+		contentError.innerText = "Challenge can only include letters and spaces"
+		$("#challenge-phrase-input").after(contentError)
+
+		return false;
 	}
 }
 

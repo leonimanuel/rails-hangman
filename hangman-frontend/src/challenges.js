@@ -139,31 +139,32 @@ function showChallengeForm() {
 
 function submitChallenge() {
 	if (validChallenge()) {
-		let configObj = {
-			method: "POST",
-			headers: {
-				"Content_Type": "application/json",
-				Accept: "application/json"
-			},
-			body: JSON.stringify({
-				challenge: {
-					recipient_name: $("#challenge-recipient-input").val(),
-					phrase: $("#challenge-phrase-input").val(),
-					hint: $("#challenge-hint-input").val(),
-					user_id: user.id 			
-				}
-			})
-		}
+		console.log("submitting challenge")
+		// let configObj = {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content_Type": "application/json",
+		// 		Accept: "application/json"
+		// 	},
+		// 	body: JSON.stringify({
+		// 		challenge: {
+		// 			recipient_name: $("#challenge-recipient-input").val(),
+		// 			phrase: $("#challenge-phrase-input").val(),
+		// 			hint: $("#challenge-hint-input").val(),
+		// 			user_id: user.id 			
+		// 		}
+		// 	})
+		// }
 
-		fetch("http://localhost:3000/challenges", configObj)
-			.then(resp => resp.json())
-			.then(function(object) {
-				console.log(object);
-				updateChallenges()
-			})
-			.catch(function(error) {
-				console.log(error.message)
-			})		
+		// fetch("http://localhost:3000/challenges", configObj)
+		// 	.then(resp => resp.json())
+		// 	.then(function(object) {
+		// 		console.log(object);
+		// 		updateChallenges()
+		// 	})
+		// 	.catch(function(error) {
+		// 		console.log(error.message)
+		// 	})		
 	}
 }
  
