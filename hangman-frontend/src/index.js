@@ -216,12 +216,15 @@ function gameOver(result) {
 };
 
 function updateScoreboard() {
-	// console.log(`updating scoreboard. updated wins: ${user.wins}. Updated losses: ${user.losses}`)
-	wins = document.getElementById("wins")
-	wins.innerText = `wins: ${user.wins}`
+	console.log(`updating scoreboard. updated wins: ${user.wins}. Updated losses: ${user.losses}`)
+	$("#user-wins").text(user.wins)
+	$("#user-losses").text(user.losses)
 
-	losses = document.getElementById("losses")
-	losses.innerText = `losses: ${user.losses}`
+	// wins = document.getElementById("wins")
+	// wins.innerText = `wins: ${user.wins}`
+
+	// losses = document.getElementById("losses")
+	// losses.innerText = `losses: ${user.losses}`
 }
 
 function gameOverPopup(result) {
