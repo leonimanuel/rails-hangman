@@ -155,8 +155,12 @@ function submitChallenge() {
 				if (challengeObj.errors) {
 					console.log(challengeObj.errors)
 					showUsernameError(challengeObj.errors)
+				} else {
+					$("#challenge-popup-inner").empty();
+					$("#challenge-popup-inner").text("Challenge Sent!")
+					updateChallenges()					
 				}
-				updateChallenges()
+
 			})
 			.catch(function(error) {
 				alert(error.message)
