@@ -196,26 +196,24 @@ function gameOver(result) {
 			.catch(function(error) {
 				console.log(error.message)
 			})					
+		
+		setTimeout(function() {
+			updateScoreboard()
+		}, 1000)
 	}
 
 	$("#hangman-picture").addClass("top")
 	
 	if (!game.subcategoryId) { // aka If this was a challenge
-		setTimeout(function() {
-			createChallengePopup()
-			}, 1200)
+		setTimeout( () => createChallengePopup(), 1200) );
 		// updateUserChallenges(result)
 	} else {
-		gameOverPopup(result)
+		setTimeout( () => gameOverPopup(result), 1200 );
 	}
-
-	setTimeout(function() {
-		updateScoreboard()
-	}, 1000)
 };
 
 function updateScoreboard() {
-	console.log(`updating scoreboard. updated wins: ${user.wins}. Updated losses: ${user.losses}`)
+	// console.log(`updating scoreboard. updated wins: ${user.wins}. Updated losses: ${user.losses}`)
 	wins = document.getElementById("wins")
 	wins.innerText = `wins: ${user.wins}`
 
