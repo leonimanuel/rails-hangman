@@ -89,33 +89,17 @@ function showChallenges(challengeType) {
 				`;
 
 				if (challenge.solved === false) {
-					console.log("A")
 					let pend = document.createElement("div");
 					pend.className = "challenge-status"
 					pend.innerText = "PENDING";
-					console.log(`challenge-${challenge.id}`)
 					$(`#challenge-${challenge.id}`).append(pend)
-					// $(`#challenge-${challenge.id}`).addClass("whhhat")
-					// console.log($(`#challenge-${challenge.id}`))
-					// let challengeBox = document.getElementById(`challenge-${challenge.id}`)
-					// challengeBox.appendChild(pending)
-					// challengeDiv.style.backgroundColor = "yellow"
 				} else if (challenge.solved === true && challenge.result === "WIN") {				
 					// challengeDiv.style.backgroundColor = "green"
-								console.log("B")
-
 						let won = document.createElement("div");
 						won.className = "challenge-status"
 						won.innerText = "WON";
 						$(`#challenge-${challenge.id}`).append(won)
-
-
-
 				} else if (challenge.solved === true && challenge.result === "LOSE") {				
-					// challengeDiv.style.backgroundColor = "red"
-											console.log("C")
-
-
 						let lost = document.createElement("div");
 						lost.className = "challenge-status"
 						lost.innerText = "LOST";
