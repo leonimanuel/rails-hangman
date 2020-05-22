@@ -1,21 +1,28 @@
-$("#received-challenges-button")[0].addEventListener("click", function() {
-	showChallenges("received")
-})
-
-$("#sent-challenges-button")[0].addEventListener("click", function() {
-	showChallenges("sent")
-})
-
-$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
-
-$("#challenges-close-button")[0].addEventListener("click", function() {
-	$("#challenge-popup-outer").addClass("hidden")
-})
-
 function createChallengePopup() {
 	console.log("Executing createChallengePopup")
 	$("#challenges-container").empty();
-	$("#challenge-popup-outer").removeClass("hidden")
+	// $("#challenge-popup-outer").removeClass("hidden")
+	let challengePopup = document.createElement("div");
+	document.body.append(challengePopup)
+	challengePopup.innerHTML = `
+	<div id="challenge-popup-outer">
+		<span id="challenges-close-button" class="close-button">X</span>
+		<h3 id="challenge-popup-header">CHALLENGES</h3>
+		<div id="challenge-popup-inner">
+			<button id="received-challenges-button">Received Challenges</button>
+			<button id="sent-challenges-button">Sent Challenges</button>
+			<div id="challenges-container">
+				CHALLENGES GO HERE
+			</div>
+			<br>
+			<button id="create-challenge-button">Create Challenge</button>
+		</div>			
+	</div> `
+
+	$("#received-challenges-button")[0].addEventListener("click", () => showChallenges("received") )
+	$("#sent-challenges-button")[0].addEventListener("click", () => showChallenges("sent") )
+	$("#create-challenge-button")[0].addEventListener("click", showChallengeForm)
+	$("#challenges-close-button")[0].addEventListener( "click", () => $("#challenge-popup-outer").remove() );
 }
 
 function showChallenges(challengeType) {
