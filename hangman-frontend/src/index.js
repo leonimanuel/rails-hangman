@@ -126,15 +126,15 @@ guessInput.addEventListener("keyup", function(e) {
 function submitGuess(guess) {
 	guess = guess.toUpperCase()
 	console.log("submitting guess")
-	console.log(guess)
-
-	let guessedLetter = document.createElement("div")
-	guessedLetter.classList.add("guessed-letter", `guessed-${guess}`)
-	guessedLetter.innerText = guess
+	console.log(guess.charCodeAt(0))
 
 	guess = guess.toUpperCase()
 
 	if (validGuess(guess)) {
+		let guessedLetter = document.createElement("div")
+		guessedLetter.classList.add("guessed-letter", `guessed-${guess}`)
+		guessedLetter.innerText = guess
+
 		$("#guess-error").text("")
 		if (game.phraseContent.toUpperCase().includes(guess)) {
 			// console.log("yippie kay yay")
@@ -192,10 +192,6 @@ function gameOver(result) {
 			.then(function(userObj) {
 				user = new User(userObj)
 				console.log("SET NEW USER")
-				// user.wins = object.wins
-				// user.losses = object.losses
-				// console.log(`new wins: ${object.wins}`)
-				// console.log(`new losses: ${object.losses}`)
 			})
 			.catch(function(error) {
 				console.log(error.message)
@@ -235,18 +231,6 @@ function gameOverPopup(result) {
 		$("#game-over-popup").addClass("hidden");
 		startGame(subcObject.phrases[Math.floor(Math.random() * subcObject.phrases.length)]);
 	})
-}
-
-function validGuess(guess) {
-	if (guess.charCodeAt(0) < 65 || guess.charCodeAt(0) > 90) {
-		guessError("Guess must be an English letter")
-	} else if (game.guessedLetters.includes(guess)) {
-		guessError("You already guessed that!")
-	} else if (guess === "") {
-		guessError("Please enter a guess")
-	} else {
-		return true
-	}
 }
 
 function guessError(errorString) {
