@@ -1,11 +1,11 @@
 #gallows-and-guesses {
 	margin-top: 30px;
 	display: flex;
-	flex-wrap: wrap;
+	/*flex-wrap: wrap;*/
 	justify-content: center;
 	padding: 0 20px;
 
-	border: 2px solid green;
+	/*border: 2px solid green;*/
 }
 
 #gallows-wrapper {
@@ -13,7 +13,7 @@
 	padding: 0 30px;
 	display: inline-block;
 
-	border: 2px solid orange;
+	/*border: 2px solid orange;*/
 }
 
 #gallows {
@@ -22,7 +22,7 @@
     grid-template-columns: repeat(6, auto) 55px 55px 0px repeat(6, 65px) repeat(5, auto);
     grid-template-rows: auto repeat(6, 15px);
     /*margin: 0;*/
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 #gallows-man {
@@ -97,7 +97,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 
-	border: 2px solid gray;
+	/*border: 2px solid gray;*/
 
 }
 

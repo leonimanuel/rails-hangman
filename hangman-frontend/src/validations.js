@@ -1,7 +1,7 @@
+//CHALLENGES
 function isLetterOrSpace(letter) {
 	return (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 90) || letter.charCodeAt(0) === 32
 }
-
 
 function validChallenge() {
 	if (document.getElementById("challenge-phrase-error")) { $("#challenge-phrase-error").remove()}
@@ -23,6 +23,14 @@ function validChallenge() {
 	}
 }
 
+function showUsernameError(errorString) {
+	let usernameError = document.createElement("div");
+	usernameError.id = "username-input-error";
+	usernameError.className = "input-error"
+	usernameError.innerText = errorString
+	$("#challenge-recipient-input").after(usernameError)
+}
+
 //GUESSES
 function validGuess(guess) {
 	if (guess.charCodeAt(0) < 65 || guess.charCodeAt(0) > 90) {
@@ -36,13 +44,11 @@ function validGuess(guess) {
 	}
 }
 
-function showUsernameError(errorString) {
-	let usernameError = document.createElement("div");
-	usernameError.id = "username-input-error";
-	usernameError.className = "input-error"
-	usernameError.innerText = errorString
-	$("#challenge-recipient-input").after(usernameError)
+function guessError(errorString) {
+	$("#guess-error").text(errorString)
+	return false
 }
+
 
 
 

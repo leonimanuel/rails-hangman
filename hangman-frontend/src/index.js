@@ -23,9 +23,13 @@ let subcObject
 
 		let random = document.createElement("div");
 		random.id = "random-phrase";
+		random.className = "category"
 		random.innerText = "Random";
 		$("#categories").append(random);
-		random.addEventListener("click", getRandomPhrase)
+		random.addEventListener("click", function() {
+			$("#subcategories").empty();
+			getRandomPhrase()
+		})
 		})
 		.catch(function(error) {
 			alert("failed bruh")
@@ -104,7 +108,7 @@ function startGame(phraseObj) {
 
 		let space = document.createElement("div");
 		space.id = "space"
-		space.innerText = "---"
+		space.innerText = "-----"
 		$("div#board").append(space)
 	}	
 
@@ -205,8 +209,7 @@ function gameOver(result) {
 	$("#hangman-picture").addClass("top")
 	
 	if (!game.subcategoryId) { // aka If this was a challenge
-		setTimeout( () => createChallengePopup(), 1200) );
-		// updateUserChallenges(result)
+		setTimeout( () => createChallengePopup(), 1200 );
 	} else {
 		setTimeout( () => gameOverPopup(result), 1200 );
 	}
@@ -230,14 +233,6 @@ function gameOverPopup(result) {
 		startGame(subcObject.phrases[Math.floor(Math.random() * subcObject.phrases.length)]);
 	})
 }
-
-function guessError(errorString) {
-	$("#guess-error").text(errorString)
-	return false
-}
-
-
-
 
 
 

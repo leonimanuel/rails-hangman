@@ -56,11 +56,11 @@ function loadUser(userObj) {
 
 	let wins = document.createElement("div");
 	wins.id = "wins";
-	wins.innerText = `wins: ${user.wins}`
+	wins.innerHTML = `wins: <span id="user-wins">${user.wins}</span>`
 
 	let losses = document.createElement("div");
 	losses.id = "losses";
-	losses.innerText = `losses: ${user.losses}`
+	losses.innerHTML = `losses: <span id="user-losses">${user.losses}</span>`
 
 	$("#user-info").append(wins)
 	$("#user-info").append(losses)

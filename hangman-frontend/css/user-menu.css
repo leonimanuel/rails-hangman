@@ -6,3 +6,17 @@
 	/*color: red;*/
 	margin-right: 10px;
 }
+
+#user-name {
+	font-size: 1.2em;
+}
+
+#user-wins {
+	color: green;
+}
+
+#user-losses {
+	color:red ;
+}
+
+
