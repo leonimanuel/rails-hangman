@@ -1,7 +1,9 @@
 class AuthenticationController < ApplicationController
 	def login
 		# binding.pry
-		if user = User.find_by(email: params[:email])
+		if params[:name]
+			redirect_to new_user_path
+		elsif user = User.find_by(email: params[:email])
 			if user.authenticate(params[:password])
 				redirect_to user_path(user)
 			else

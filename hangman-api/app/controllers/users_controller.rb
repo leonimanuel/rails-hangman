@@ -23,4 +23,8 @@ class UsersController < ApplicationController
 		# binding.pry
 		render json: UserSerializer.new(user).to_serialized_json
 	end
+
+	def create
+		binding.pry
+	end
 end
