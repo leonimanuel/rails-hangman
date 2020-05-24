@@ -105,7 +105,7 @@ div {
 }
 
 #login-inputs-container {
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 	margin: 0 20px;
 	margin-bottom: 10px;
 }

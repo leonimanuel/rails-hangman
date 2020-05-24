@@ -22,7 +22,7 @@
 #challenge-popup-inner {
 
 	margin: 10px;
-  border: 1px solid purple;
+  /*border: 1px solid purple;*/
 
   /*background-color: snow;*/
 }
@@ -51,4 +51,8 @@
 
 .challenge-status {
 	/*cursor: pointer;*/
+}
+
+.challenger-name, .recipient-name {
+	text-align: left;
 }

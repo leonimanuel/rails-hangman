@@ -42,8 +42,8 @@ function showChallenges(challengeType) {
 
 			challengeDiv.innerHTML = `
 				<div class="challenge-details-container">
-					<div class="challenge-detail">${challenge.user.name}</div>
-					<div class="challenge-detail">${challenge.hint}</div>
+					<div class="challenger-name">from: ${challenge.user.name}</div>
+					<div class="challenge-hint">hint: ${challenge.hint}</div>
 				</div>
 				`;
 
@@ -89,8 +89,8 @@ function showChallenges(challengeType) {
 
 				challengeDiv.innerHTML = `
 					<div class="challenge-details-container">
-						<div class="challenge-detail">${challenge.recipient.name}</div>
-						<div class="challenge-detail">${challenge.content}</div>
+						<div class="recipient-name">for: ${challenge.recipient.name}</div>
+						<div class="challenge-content">phrase: ${challenge.content}</div>
 					</div>
 				`;
 

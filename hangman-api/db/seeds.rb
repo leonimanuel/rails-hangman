@@ -42,7 +42,7 @@ Phrase.create(content: "Dr Strangelove Or How I Learned to Stop Worrying and Lov
 Challenge.create(content: "Rampage", hint: "George", user: User.find(1), recipient: User.find(4))
 Challenge.create(content: "Bon viv", hint: "spiked seltzer", user: megan, recipient: billy)
 Challenge.create(content: "Charlie", hint: "Güt boy", user: billy, recipient: User.find(2))
-Challenge.create(content: "The Feed", hint: "Right in my eye", user: ashley, recipient: billy, solved: false, result: "WIN")
+Challenge.create(content: "The Feed", hint: "Fundle my mundles", user: ashley, recipient: billy, solved: false, result: "WIN")
 Challenge.create(content: "Fleabag", hint: "Fleas", user: billy, recipient: User.find(2))
 Challenge.create(content: "Catcher in the Rye", hint: "Holden", user: claire, recipient: billy, solved: true, result: "LOSE")
 Challenge.create(content: "Inception", hint: "We have to go deeper.", user: billy, recipient: User.find(3))
