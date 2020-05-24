@@ -1,4 +1,11 @@
 $("div#login")[0].addEventListener("click", openLogin)
+$("div#signup")[0].addEventListener("click", function() {
+	let signupInput = document.createElement("div");
+	signupInput.innerHTML = `Name: <input type="text" id="name-input" value=""> <br>`
+	$("#login-inputs-container").prepend(signupInput)
+	openLogin()
+} )
+
 $("#login-button")[0].addEventListener("click", logIn)
 $("#login-close-button")[0].addEventListener("click", closeLogin)
 
@@ -14,7 +21,6 @@ function closeLogin() {
 
 function logIn() {
 	// console.log($("#email-input").val())
-
 	let configObj = {
 		method: "POST",
 		headers: {
