@@ -1,8 +1,12 @@
-$("div#login")[0].addEventListener("click", openLogin)
+$("div#login")[0].addEventListener("click", function() {
+	$("#name-field").addClass("hidden")
+	openLogin()
+} )
 $("div#signup")[0].addEventListener("click", function() {
-	let signupInput = document.createElement("div");
-	signupInput.innerHTML = `Name: <input type="text" id="name-input" value=""> <br>`
-	$("#login-inputs-container").prepend(signupInput)
+	// let signupInput = document.createElement("div");
+	// signupInput.innerHTML = `Name: <input type="text" id="name-input" value=""> <br>`
+	// $("#login-inputs-container").prepend(signupInput)
+	$("#name-field").removeClass("hidden")
 	openLogin()
 } )
 
@@ -28,6 +32,7 @@ function logIn() {
 			Accept: "application/json"
 		},
 		body: JSON.stringify({
+			name: $("#name-input").val(),
 			email: $("#email-input").val(),
 			password: $("#password-input").val()
 		})
