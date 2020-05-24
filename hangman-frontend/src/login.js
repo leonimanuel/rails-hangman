@@ -52,11 +52,11 @@ function logIn() {
 			console.log(error.messsage)
 		})
 }
-
 function loadUser(userObj) {
 	user = new User(userObj);
 	
-	$("#login").addClass("hidden");
+	// $("#login").addClass("hidden");
+	$("#user-info").empty()
 	// userInfo = document.createElement("div");
 	// userInfo.id = "user-info";
 
