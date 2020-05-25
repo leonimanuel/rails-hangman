@@ -33,7 +33,7 @@ function showChallenges(challengeType) {
 
 	if (challengeType === "received") {
 		for (let challenge of user.receivedChallengesObjArr) {
-			console.log(`content: ${challenge.content}, solved: ${challenge.solved}, result: ${challenge.result}`)
+			// console.log(`content: ${challenge.content}, solved: ${challenge.solved}, result: ${challenge.result}`)
 			let challengeDiv = document.createElement("div");
 			challengeDiv.id = `challenge-${challenge.id}`;
 			challengeDiv.classList.add("challenge-box");
@@ -58,7 +58,7 @@ function showChallenges(challengeType) {
 				$(`#challenge-${challenge.id}`).append(play)
 				
 				$(`#play-${challenge.id}`)[0].addEventListener("click", function() {
-					$("#challenge-popup-outer").addClass("hidden")
+					$("#challenge-popup-outer").remove()
 					// console.log(challenge.id)
 					startGame(challenge)
 				})
